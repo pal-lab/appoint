@@ -7,6 +7,7 @@ const {
 const routes = (
   <Route name="root" handler={AppBody} path="/">
     <Route name="todoList" path="/lists/:listId" handler={InboxPage} />
+    <Route name="addMember" path="/newappoint/addmembers" handler={AddMemberPage} />
     <Route name="join" path="/join" handler={AuthJoinPage} />
     <Route name="signin" path="/signin" handler={AuthSignInPage} />
     <DefaultRoute handler={AppLoading} />
