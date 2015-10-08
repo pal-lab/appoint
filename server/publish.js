@@ -9,7 +9,6 @@ Meteor.publish('appointment', function() {
 });
 
 Meteor.publish('users', function() {
-  // return Appointments.find({userId: {$exists: false}});
   if (this.userId) {
 
     return Meteor.users.find({}, {
@@ -41,23 +40,8 @@ Meteor.publish('appointmentproposal', function(apId) {
       appointment: apId
     });
 
-    return AppointmentInvitees.publishJoinedCursors(cursor);
+    return AppointmentProposals.publishJoinedCursors(cursor);
   } else {
     this.ready();
   }
 });
-
-
-// Meteor.publish('privateLists', function() {
-//   if (this.userId) {
-//     return Lists.find({userId: this.userId});
-//   } else {
-//     this.ready();
-//   }
-// });
-
-// Meteor.publish('todos', function(listId) {
-//   check(listId, String);
-
-//   return Todos.find({listId: listId});
-// });
