@@ -9,6 +9,7 @@ const routes = (
     <Route name="inboxpage" path="/inboxpage" handler={InboxPage} />
     <Route name="join" path="/join" handler={AuthJoinPage} />
     <Route name="signin" path="/signin" handler={AuthSignInPage} />
+    <Route name="NewAppointmentPage" path="/NewAppointmentPage" handler={NewAppointmentPage} />
   </Route>
 )
 
