@@ -11,6 +11,11 @@ LeftPanel = React.createClass({
         <UserSidebarSection user={ this.props.currentUser } />
         <div className="list-todos">
 
+            <Link
+              className="list-todo"
+              to="inboxpage">
+              Inbox
+            </Link>
           <Link
             className="list-todo"
             to="addMember">
