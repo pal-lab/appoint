@@ -27,6 +27,7 @@ InboxPage = React.createClass({
         <HeaderBar
           status={"InboxPage"}
           showLoadingIndicator={this.data.tasksLoading} />
+      <AppointmentList appointments={[{title : "title-1"},{title : "title-2"}]}/>
       </div>
     );
   }
