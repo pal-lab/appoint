@@ -1,6 +1,6 @@
-AddMemberList = React.createClass({
+AddMemberItem = React.createClass({
   propTypes: {
-    firstname: React.propTypes.string.isRequired,
+    firstname: React.PropTypes.string,
   },
 
   // getInitialState() {
@@ -27,7 +27,7 @@ AddMemberList = React.createClass({
   render() {
     return (
       <div className="list-item member">
-        { this.props.firstname }
+        {this.props.firstname}
       </div>
     );
   }

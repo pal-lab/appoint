@@ -8,7 +8,23 @@ AddMemberPage = React.createClass({
 
   getMeteorData() {
     return {
-      members: Accounts.fetch(),
+      members: [
+        {
+          'id': 1,
+          'firstname': 'Philipp'},
+        {
+          'id': 2,
+          'firstname': 'Jorrit'},
+        {
+          'id': 3,
+          'firstname': 'Johannes'},
+        {
+          'id': 4,
+          'firstname': 'Sven'},
+        {
+          'id': 5,
+          'firstname': 'Gregor'}
+      ],
     };
   },
 

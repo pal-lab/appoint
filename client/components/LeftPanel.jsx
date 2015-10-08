@@ -1,4 +1,6 @@
 /*jshint esnext: true */
+const Link = ReactRouter.Link;
+
 LeftPanel = React.createClass({
   propTypes: {
     currentUser: React.PropTypes.object,
@@ -7,14 +9,14 @@ LeftPanel = React.createClass({
     return (
       <section id="menu">
         <UserSidebarSection user={ this.props.currentUser } />
-        <ul>
-          <li>
-            <Link
-              to="addMember">
-              Add a member
-            </Link>
-          </li>
-        </ul>
+        <div className="list-todos">
+
+          <Link
+            className="list-todo"
+            to="addMember">
+            Invite a friend
+          </Link>
+        </div>
       </section>
     );
   }
