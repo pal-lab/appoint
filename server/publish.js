@@ -1,9 +1,8 @@
 
-Meteor.publish('appointments', function() {
+Meteor.publish('appointment', function() {
   // return Appointments.find({userId: {$exists: false}});
-  var test = Appointments.find();
-  console.log('publish appointments'+ test.count());
-  return test;
+
+  return Appointments.find();
 });
 
 // Meteor.publish('privateLists', function() {

@@ -12,7 +12,7 @@ InboxPage = React.createClass({
     //const listId = this.getParams().listId;
 
     // Subscribe to the tasks we need to render this component
-    //const tasksSubHandle = Meteor.subscribe("todos", listId);
+    const appoints = Meteor.subscribe("appointment");
 
     return {
       //tasks: Todos.find({ listId: listId }, {sort: {createdAt : -1}}).fetch(),
