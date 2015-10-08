@@ -1,18 +1,16 @@
 /*jshint esnext: true */
-AppointmentDetails = React.createClass({
+NewAppointmentInput = React.createClass({
   propTypes: {
-    appointment: React.PropTypes.object.isRequired
+
   },
   render() {
 
       return (
-        <div className="page appointment-details">
+        <div className="content-scrollable list-items">
 
-          <AppointmentSettings
-            appointment={this.props.appointment} />
+          <NewAppointmentSettings/>
 
-          <AppointmentMembers
-            invitees={this.props.appointment.invitees} />
+          <NewAppointmentMembers/>
 
         </div>
       );

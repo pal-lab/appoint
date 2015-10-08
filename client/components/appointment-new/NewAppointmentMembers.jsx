@@ -1,7 +1,7 @@
 /*jshint esnext: true */
-AppointmentMembers = React.createClass({
+NewAppointmentMembers = React.createClass({
   propTypes: {
-    invitees: React.PropTypes.object.isRequired
+
   },
 
   render() {
