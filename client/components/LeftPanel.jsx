@@ -17,11 +17,6 @@ LeftPanel = React.createClass({
           </Link>
           <Link
             className="list-todo"
-            to="addMemberPage">
-            Invite a friend
-          </Link>
-          <Link
-            className="list-todo"
             to="newAppointmentPage">
             New Appoint
           </Link>

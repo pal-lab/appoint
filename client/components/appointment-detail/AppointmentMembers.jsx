@@ -1,8 +1,11 @@
+const Link = ReactRouter.Link;
+
 AppointmentMembers = React.createClass({
   propTypes: {
-    members: React.PropTypes.array.isRequired
+    members: React.PropTypes.array.isRequired,
+    appointment: React.PropTypes.object.isRequired
   },
- 
+
   render() {
     let className = "appointment-members";
 
@@ -19,6 +22,11 @@ AppointmentMembers = React.createClass({
     return (
       <div className="content-scrollable list-items">
         { allMembers }
+        <Link
+          to="addMemberPage"
+          params={{ appointment_id: this.props.appointment._id }}
+        >
+        Invite yo friendz</Link>
       </div>
     );
   }

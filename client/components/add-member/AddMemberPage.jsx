@@ -7,10 +7,11 @@ AddMemberPage = React.createClass({
   mixins: [ReactMeteorData, Navigation, State],
 
   getMeteorData() {
-
+    const appointment_id = this.getParams().appointment_id;
     const usersSubHandle = Meteor.subscribe("users");
 
     return {
+      appointment: Appointments.findOne({ _id: appointment_id }),
       members: Meteor.users.find().fetch()
     };
   },
@@ -27,10 +28,15 @@ AddMemberPage = React.createClass({
         <HeaderBar
           // title={this.data.appointment.purpose}
           status={"AddMemberPage"}
-          showLoadingIndicator={this.data.appointmentLoading} />
+          showLoadingIndicator = { this.data.appointmentLoading }
+          />
+        <h1>{ this.data.appointment }</h1>
 
         <div className="content-scrollable list items addusers">
-          <AddMemberList members={this.data.members} />
+          <AddMemberList
+            members = { this.data.members }
+            appointment = { this.data.appointment }
+            />
         </div>
       </div>
     );

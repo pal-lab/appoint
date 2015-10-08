@@ -1,6 +1,7 @@
 AddMemberList = React.createClass({
   propTypes: {
-    members: React.PropTypes.array.isRequired
+    members: React.PropTypes.array.isRequired,
+    appointment: React.PropTypes.object.isRequired
   },
 
   render() {
@@ -10,7 +11,9 @@ AddMemberList = React.createClass({
           key = { member._id}
           userId = { member._id }
           firstname = { member.profile.firstname }
-          lastname = { member.profile.lastname} />
+          lastname = { member.profile.lastname }
+          appointment = { this.props.appointment }
+          />
       );
     });
 

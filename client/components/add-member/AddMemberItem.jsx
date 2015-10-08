@@ -2,7 +2,8 @@ AddMemberItem = React.createClass({
   propTypes: {
     firstname: React.PropTypes.string,
     lastname: React.PropTypes.string,
-    userId: React.PropTypes.string
+    userId: React.PropTypes.string,
+    appointment: React.PropTypes.object.isRequired
   },
 
   getInitialState() {
@@ -12,14 +13,13 @@ AddMemberItem = React.createClass({
   },
 
   inviteUser() {
-    console.log('Lets invite him: ' + this.props.userId);
-    console.log(this.props.userId);
-    Meteor.call("appointment/addinvitee", '8W9JdhY2NPkRTcRTJ', this.props.userId);
+    console.log('Inviting user with ID: ' + this.props.userId)
+    Meteor.call("appointment/addinvitee", this.props.appointment._id, this.props.userId);
   },
 
-  uninviteUser(userID) {
-    console.log('Fuck him, lets party: ' + userID);
-    Meteor.call("appointment/removeinvitee", '8W9JdhY2NPkRTcRTJ', userID);
+  uninviteUser() {
+    console.log('Uninviting user with ID: ' + this.props.userId);
+    Meteor.call("appointment/removeinvitee", this.props.appointment._id, this.props.userId);
   },
 
   render() {
