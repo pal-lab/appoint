@@ -25,7 +25,7 @@ InboxPage = React.createClass({
     return (
       <div className="page lists-show">
         <HeaderBar
-          title={"InboxPage"}
+          status={"InboxPage"}
           showLoadingIndicator={this.data.tasksLoading} />
       </div>
     );
