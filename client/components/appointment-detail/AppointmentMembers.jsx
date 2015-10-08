@@ -2,19 +2,19 @@ const Link = ReactRouter.Link;
 
 AppointmentMembers = React.createClass({
   propTypes: {
-    invitees: React.PropTypes.object.isRequired
+    members: React.PropTypes.array.isRequired
   },
 
   render() {
     let className = "appointment-members";
 
-    var allMembers = this.props.invitees.map((member) => {
+    var allMembers = this.props.members.map((member) => {
       return (
         <MemberItem
           // firstname={ member.firstname }/>
           key = { member._id}
-          firstname = { member.account.profile.firstname }
-          lastname = { member.account.profile.lastname}/>
+          firstname = { member.users.profile.firstname }
+          lastname = { member.users.profile.lastname}/>
       );
     });
 

@@ -12,10 +12,12 @@ AppointmentPage = React.createClass({
     
 
     // Subscribe to the appointment we need to render this component
-    const appointmentSubHandle = Meteor.subscribe("appointment", appointment_id);
+    const appointmentSubHandle = Meteor.subscribe("appointment");
+    const membersSubHandle = Meteor.subscribe("appointmentinvitees", appointment_id);
 
     return {
       appointment: Appointments.findOne({ _id: appointment_id }),
+      members: AppointmentInvitees.find().fetch(),
       appointmentLoading: ! appointmentSubHandle.ready()
     };
   },
@@ -36,7 +38,8 @@ AppointmentPage = React.createClass({
 
         <div className="content-scrollable list-items appointment-page">
           <AppointmentDetails
-            appointment={this.data.appointment} />
+            appointment={this.data.appointment}
+            members={this.data.members} />
         </div>
       </div>
     );
