@@ -1,7 +1,7 @@
 AppointmentDetails = React.createClass({
   propTypes: {
     appointment: React.PropTypes.object.isRequired,
-    members: React.PropTypes.array.isRequired
+    invitedMembers: React.PropTypes.array.isRequired
   },
   render() {
 
@@ -13,7 +13,7 @@ AppointmentDetails = React.createClass({
             />
 
           <AppointmentMembers
-            members={this.props.members}
+            invitedMembers={this.props.invitedMembers}
             appointment={this.props.appointment}
             />
 
