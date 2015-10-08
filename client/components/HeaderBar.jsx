@@ -1,5 +1,5 @@
 /*jshint esnext: true */
-
+const Link = ReactRouter.Link;
 HeaderBar = React.createClass({
   mixins: [ReactRouter.Navigation],
 
@@ -15,7 +15,12 @@ HeaderBar = React.createClass({
         <nav>
           <div className="wrapper-message">
             <div className="title-message">Inbox</div>
-            <span className="icon-add" to NewAppointmentPage/>
+            <span className="icon-add" />
+            <Link
+            className="newappointment"
+            to="newAppointmentPage">
+            New Appointment
+          </Link>
           </div>
         </nav>
       );
