@@ -10,8 +10,10 @@ HeaderBar = React.createClass({
 
    onSubmitNewAppointment(event) {
     event.preventDefault();
+    const earliest= moment().toDate();
+    const latest= moment().add(7, 'days').toDate();
 
-    const appointment = {latest: '2015-12-29 12:33', earliest: '2015-10-20 12:30', purpose: 'ffdsfdsfgsgfg', location: 'asd', duration: 180}
+    const appointment = {latest: latest, earliest: earliest, purpose: 'Type to add purpose', location: 'Type to add location', duration: 180}
 
     Meteor.call('appointment/create', appointment, ['asd']);
   },
