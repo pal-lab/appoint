@@ -64,18 +64,6 @@ AuthSignInPage = React.createClass({
           <form onSubmit={ this.onSubmit }>
             <AuthErrors errors={this.state.errors} />
 
-            <AuthFormInput hasError={!! this.state.errors.firstname}
-              type="firstname"
-              name="firstname"
-              label="Firstname"
-              iconClass="icon-user" />
-
-            <AuthFormInput hasError={!! this.state.errors.lastname}
-              type="lastname"
-              name="lastname"
-              label="Lastname"
-              iconClass="icon-user" />
-
             <AuthFormInput
               hasError={!! this.state.errors.email}
               type="email"
