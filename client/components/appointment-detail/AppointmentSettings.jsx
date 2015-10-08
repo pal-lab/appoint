@@ -32,7 +32,7 @@ AppointmentSettings = React.createClass({
       earliest: this.state.earliest,
       latest: this.state.latest
     });
-    console.log(this.refs.purpose.getDOMNode().value);
+    console.log("Changes saved");
   },
 
   updateAppointmentWithNewData(newData) {
