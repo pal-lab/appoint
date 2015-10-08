@@ -13,7 +13,7 @@ HeaderBar = React.createClass({
     const earliest= moment().toDate();
     const latest= moment().add(7, 'days').toDate();
 
-    const appointment = {latest: latest, earliest: earliest, purpose: 'Type to add purpose', location: 'Type to add location', duration: 180}
+    const appointment = {latest: latest, earliest: earliest, purpose: 'Type to add purpose', location: 'Type to add location', duration: 180};
 
     Meteor.call('appointment/create', appointment, ['asd']);
   },
@@ -23,6 +23,7 @@ HeaderBar = React.createClass({
     if (this.props.status === 'InboxPage') {
       nav = (
         <nav>
+          <MenuOpenToggle />
           <div className="wrapper-message">
             <div className="title-message">Inbox</div>
             <span className="icon-add" onClick={ this.onSubmitNewAppointment }/>
@@ -33,6 +34,7 @@ HeaderBar = React.createClass({
     } else if (this.props.status === 'NewAppointmentPage') {
    nav = (
         <nav>
+          <MenuOpenToggle />
           <div className="wrapper-message">
             <div className="title-message">New Appointment</div>
           </div>
@@ -41,6 +43,7 @@ HeaderBar = React.createClass({
     } else if (this.props.status === 'AddMemberPage') {
    nav = (
         <nav>
+          <MenuOpenToggle />
           <div className="wrapper-message">
             <div className="title-message">Add Member</div>
           </div>
@@ -49,6 +52,7 @@ HeaderBar = React.createClass({
     } else if (this.props.status === 'AppointmentPage') {
    nav = (
         <nav>
+          <MenuOpenToggle />
           <div className="wrapper-message">
             <div className="title-message">Appointment</div>
           </div>
