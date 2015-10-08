@@ -6,7 +6,7 @@ Meteor.publish('appointment', function() {
 
 Meteor.publish('users', function() {
   // return Appointments.find({userId: {$exists: false}});
-  return Meteor.users.find();
+  return Meteor.users.find({}, { emails: 1, profile: 1 });
 });
 
 // Meteor.publish('privateLists', function() {

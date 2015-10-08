@@ -17,6 +17,8 @@ AuthJoinPage = React.createClass({
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirm = event.target.confirm.value;
+    const firstname = event.target.firstname.value;
+    const lastname = event.target.lastname.value;
 
     const errors = {};
 
@@ -26,6 +28,13 @@ AuthJoinPage = React.createClass({
 
     if (! password) {
       errors.password = 'Password required';
+    }
+
+    if (! firstname) {
+      errors.firstname = 'Firstname required';
+    }
+    if (! lastname) {
+      errors.lastname = 'Lastname required';
     }
 
     if (confirm !== password) {
@@ -43,7 +52,8 @@ AuthJoinPage = React.createClass({
 
     Accounts.createUser({
       email: email,
-      password: password
+      password: password,
+      profile: {firstname: firstname, lastname: lastname}
     }, (error) => {
       if (error) {
         this.setState({
@@ -72,6 +82,18 @@ AuthJoinPage = React.createClass({
 
             <form onSubmit={ this.onSubmit }>
               <AuthErrors errors={this.state.errors} />
+
+              <AuthFormInput hasError={!! this.state.errors.firstname}
+                type="text"
+                name="firstname"
+                label="Firstname"
+                iconClass="icon-check" />
+
+              <AuthFormInput hasError={!! this.state.errors.lastname}
+                type="text"
+                name="lastname"
+                label="Lastname"
+                iconClass="icon-check" />
 
               <AuthFormInput
                 hasError={!!this.state.errors.email}
