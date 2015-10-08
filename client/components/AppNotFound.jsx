@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 AppNotFound = React.createClass({
   render() {
     return (

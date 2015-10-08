@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 const {
   Navigation,
   Link
