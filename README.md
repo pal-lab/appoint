@@ -12,9 +12,9 @@ AppBody
 
             NewAppointmentPage (P)
                 HeaderBar (P)
-                NewAppointmentInput
-                    NewAppointmentSettings
-                    NewAppointmentMembers
+                NewAppointmentInput (P)
+                    NewAppointmentSettings (P)
+                    NewAppointmentMembers (P)
             AddMemberPage (P)
                 HeaderBar (P)
                 AddMemberList
