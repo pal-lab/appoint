@@ -19,7 +19,11 @@ Meteor.publish('users', function() {
 Meteor.publish('appointmentinvitees', function(apId) {
   check(apId, String);
 
-  return AppointmentInvitees.find({appointment: apId});
+  var cursor = AppointmentInvitees.find({
+    appointment: apId
+  });
+
+  return AppointmentInvitees.publishJoinedCursors(cursor);
 });
 
 
