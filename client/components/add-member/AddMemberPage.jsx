@@ -8,7 +8,6 @@ AddMemberPage = React.createClass({
 
   getMeteorData() {
     const appointment_id = this.getParams().appointment_id;
-    console.log(appointment_id);
     const usersSubHandle = Meteor.subscribe("users");
 
     return {
@@ -36,7 +35,7 @@ AddMemberPage = React.createClass({
         <div className="content-scrollable list items addusers">
           <AddMemberList
             members = { this.data.members }
-            // appointment = { this.data.appointment }
+            appointment = { this.data.appointment }
             />
         </div>
       </div>

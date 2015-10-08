@@ -15,7 +15,6 @@ AppointmentItem = React.createClass({
         <Link
           className={ className }
           key={ this.props.appointment._id }
-
           to="appointmentpage"
           params={{ appointment_id: this.props.appointment._id }}>
             {this.props.appointment.purpose}

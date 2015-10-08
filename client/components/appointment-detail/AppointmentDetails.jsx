@@ -4,15 +4,18 @@ AppointmentDetails = React.createClass({
     members: React.PropTypes.array.isRequired
   },
   render() {
-    
+
       return (
         <div className="page appointment-details">
-          
+
           <AppointmentSettings
-            appointment={this.props.appointment} />
+            appointment={this.props.appointment}
+            />
 
           <AppointmentMembers
-            members={this.props.members} />
+            members={this.props.members}
+            appointment={this.props.appointment}
+            />
 
         </div>
       );

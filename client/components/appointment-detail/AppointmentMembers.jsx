@@ -2,7 +2,8 @@ const Link = ReactRouter.Link;
 
 AppointmentMembers = React.createClass({
   propTypes: {
-    members: React.PropTypes.array.isRequired
+    members: React.PropTypes.array.isRequired,
+    appointment: React.PropTypes.object.isRequired
   },
 
   render() {
@@ -23,7 +24,7 @@ AppointmentMembers = React.createClass({
         { allMembers }
         <Link
           to="addMemberPage"
-          params={{ appointment_id: 'asdasdasdasd' }}
+          params={{ appointment_id: this.props.appointment._id }}
         >
         Invite yo friendz</Link>
       </div>
