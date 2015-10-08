@@ -5,7 +5,7 @@ Meteor.publish('appointment', function() {
   //   console.log(results.invitee);
   // });
 
-  return Appointments.find();
+  return Appointments.find({ initiator: this.userId });
 });
 
 Meteor.publish('users', function() {
