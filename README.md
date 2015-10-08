@@ -2,25 +2,25 @@
 appoint meteor application
 
 AppBody
-    LeftPanel
-        UserSidebarSection
-    RouteHandler
-            InboxPage
-                HeaderBar
-                AppointmentList
-                    AppointmentItem
+    LeftPanel (G)
+        UserSidebarSection (G)
+    RouteHandler (All)
+            InboxPage (J)
+                HeaderBar (P)
+                AppointmentList (J)
+                    AppointmentItem (J)
 
-            NewAppointmentPage
-                HeaderBar
+            NewAppointmentPage (P)
+                HeaderBar (P)
                 NewAppointmentInput
                     NewAppointmentSettings
                     NewAppointmentMembers
-            AddMemberPage
-                HeaderBar
+            AddMemberPage (P)
+                HeaderBar (P)
                 AddMemberList
                     AddMemberItem
-            AppointmentPage
-                HeaderBar
-                AppointmentDetails
-                    AppointmentSettings
-                    AppointmentMembers
+            AppointmentPage (S)
+                HeaderBar (P)
+                AppointmentDetails (S)
+                    AppointmentSettings (S)
+                    AppointmentMembers (S)

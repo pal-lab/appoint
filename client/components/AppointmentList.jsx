@@ -6,18 +6,18 @@ AppointmentList = React.createClass({
     },
 
     render() {
-        var allAppointments = this.props.appointments.map((appointment) => {
-            return (
-                <p>{appointment.title}</p>
-            );
-        });
+    var allAppointments = this.props.appointments.map((appointment) => {
+      return (
+        <AppointmentItem
+          key={ appointment._id }
+          appointment={ appointment } />
+      );
+    });
 
-        return (
-            <div>
-                <div className="content-scrollable list-items">
-                    {allAppointments}
-                </div>
-            </div>
-        );
-    }
+    return (
+      <div className="content-scrollable list-items">
+        { allAppointments }
+      </div>
+    );
+  }
 });
