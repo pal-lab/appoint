@@ -6,8 +6,10 @@ const {
 
 const routes = (
   <Route name="root" handler={AppBody} path="/">
-    <Route name="addMember" path="/newappoint/addmembers" handler={AddMemberPage} />
-    <Route name="inboxpage" path="/inboxpage" handler={InboxPage} />
+    <Route name="inboxPage" path="/inbox" handler={InboxPage} />
+    <Route name="addMemberPage" path="/newappoint/addmembers" handler={AddMemberPage} />
+    <Route name="newAppointmentPage" path="/newappoint" handler={NewAppointmentPage} />
+    <Route name="appointmentPage" path="/appoint" handler={AppointmentPage} />
     <Route name="join" path="/join" handler={AuthJoinPage} />
     <Route name="signin" path="/signin" handler={AuthSignInPage} />
   </Route>

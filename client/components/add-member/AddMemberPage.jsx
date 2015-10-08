@@ -11,19 +11,19 @@ AddMemberPage = React.createClass({
       members: [
         {
           'id': 1,
-          'firstname': 'Philipp'},
+          'firstname': 'Philipp DUMMY'},
         {
           'id': 2,
-          'firstname': 'Jorrit'},
+          'firstname': 'Jorrit DUMMY'},
         {
           'id': 3,
-          'firstname': 'Johannes'},
+          'firstname': 'Johannes DUMMY'},
         {
           'id': 4,
-          'firstname': 'Sven'},
+          'firstname': 'Sven DUMMY'},
         {
           'id': 5,
-          'firstname': 'Gregor'}
+          'firstname': 'Gregor DUMMY'}
       ],
     };
   },
