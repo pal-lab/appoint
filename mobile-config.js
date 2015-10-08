@@ -1,9 +1,9 @@
 App.info({
-  name: 'Todos',
+  name: 'Appoint',
   description: 'A simple todo list app built in Meteor.',
-  author: 'Percolate Studio Team',
-  email: 'us@percolatestudio.com',
-  website: 'http://percolatestudio.com',
+  author: 'pal.lap appoint team',
+  email: 'TODO',
+  website: 'TODO',
   version: '0.0.1'
 });
 
@@ -44,4 +44,3 @@ App.launchScreens({
 
 App.setPreference('StatusBarOverlaysWebView', 'false');
 App.setPreference('StatusBarBackgroundColor', '#000000');
-
