@@ -1,6 +1,7 @@
 AddMemberList = React.createClass({
   propTypes: {
-    members: React.PropTypes.array.isRequired
+    members: React.PropTypes.array.isRequired,
+    // appointment: React.PropTypes.string.isRequired
   },
 
   render() {

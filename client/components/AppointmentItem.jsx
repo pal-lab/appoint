@@ -4,14 +4,14 @@ AppointmentItem = React.createClass({
   propTypes: {
     appointment: React.PropTypes.object.isRequired,
   },
-  
+
 
   render() {
     let className = "list-item";
 
     return (
       <div className={ className }>
-        
+
         <Link
           className={ className }
           key={ this.props.appointment._id }
@@ -20,7 +20,7 @@ AppointmentItem = React.createClass({
           params={{ appointment_id: this.props.appointment._id }}>
             {this.props.appointment.purpose}
         </Link>
-          
+
       </div>
     );
   }

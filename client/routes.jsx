@@ -8,7 +8,7 @@ const routes = (
   <Route name="root" handler={AppBody} path="/">
     <Route name="inboxPage" path="/inbox" handler={InboxPage} />
     <Route name="appointmentpage" path="/appointmentpage/:appointment_id" handler={AppointmentPage} />
-    <Route name="addMemberPage" path="/newappoint/addmembers" handler={AddMemberPage} />
+    <Route name="addMemberPage" path="/newappoint/addmembers/:appointment_id" handler={AddMemberPage} />
     <Route name="join" path="/join" handler={AuthJoinPage} />
     <Route name="signin" path="/signin" handler={AuthSignInPage} />
     <Route name="newAppointmentPage" path="/newappointmentpage" handler={NewAppointmentPage} />
