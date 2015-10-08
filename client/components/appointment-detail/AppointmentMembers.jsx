@@ -1,9 +1,14 @@
 const Link = ReactRouter.Link;
 
 AppointmentMembers = React.createClass({
+  mixins: [ReactRouter.Navigation],
   propTypes: {
     invitedMembers: React.PropTypes.array.isRequired,
     appointment: React.PropTypes.object.isRequired
+  },
+
+  handleClick() {
+    this.transitionTo('addMemberPage', {appointment_id: this.props.appointment._id});
   },
 
   render() {
@@ -21,11 +26,11 @@ AppointmentMembers = React.createClass({
     return (
       <div className="content-scrollable list-items">
         { allMembers }
-        <Link
-          to="addMemberPage"
-          params={{ appointment_id: this.props.appointment._id }}
-        >
-        Invite yo friendz</Link>
+        <button type="submit" className="btn-primary" onClick= {this.handleClick}>
+                Add Members
+        </button>
+
+
       </div>
     );
   }
