@@ -11,8 +11,8 @@ AppointmentSettings = React.createClass({
       purpose: this.props.appointment.purpose,
       location: this.props.appointment.location,
       duration: this.props.appointment.duration,
-      earliest: this.props.appointment.earliest,
-      latest: this.props.appointment.latest
+      earliest: moment(this.props.appointment.earliest),
+      latest: moment(this.props.appointment.latest)
     };
   },
 
@@ -29,8 +29,8 @@ AppointmentSettings = React.createClass({
       purpose: this.refs.purpose.getDOMNode().value,
       location: this.refs.location.getDOMNode().value,
       duration: this.refs.duration.getDOMNode().value,
-      earliest: this.state.earliest,
-      latest: this.state.latest
+      earliest: this.state.earliest.toDate(),
+      latest: this.state.latest.toDate()
     });
     console.log("Changes saved");
   },
@@ -44,13 +44,12 @@ AppointmentSettings = React.createClass({
   render() {
     let className = "appointment-settings";
 
-    const earliest= moment(this.props.appointment.earliest).format('L');
-    const latest= moment(this.props.appointment.latest).format('L');
-
     let appointmentSettings;
 
     
     if(!this.state.editableAppointment) {
+      const earliest= moment(this.props.appointment.earliest).format('L');
+      const latest= moment(this.props.appointment.latest).format('L');
       appointmentSettings = (
         <div className={ className }>
           <p className="purpose">Purpose: {this.props.appointment.purpose}</p>
@@ -61,33 +60,45 @@ AppointmentSettings = React.createClass({
       )
 
     } else {
+      
       appointmentSettings = (
         
         <div>
            
           <form onSubmit={this.handleSubmit}>
+          <label class="item item-input">
+                <span class="input-label">Purpose</span>
             <input
               name="purpose"
               ref="purpose"
               onChange={this.handleChange}
               onBlur={this.handleBlur}
-              value={this.state.purpose}/> <br/>
+              value={this.state.purpose}
+            /> </label><br/>
+            <label class="item item-input">
+                <span class="input-label">Location</span>
             <input
               name="location"
               ref="location"
               onChange={this.handleChange}
               onBlur={this.handleBlur}
-              value={this.state.location}/> <br/>
-            <input
-              name="duration"
-              ref="duration"
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
-              value={this.state.duration}/>
+              value={this.state.location}
+            /></label><br/>
+              <label class="item item-input">
+                <span class="input-label">Duration</span>
+                <input
+                  name="duration"
+                  ref="duration"
+                  onChange={this.handleChange}
+                  onBlur={this.handleBlur}
+                  value={this.state.duration}/>
+              </label>
+              
           </form>
         </div>
 
       )
+    
     }
 
     return appointmentSettings;
