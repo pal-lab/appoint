@@ -1,5 +1,7 @@
-Meteor.publish('appointments', function() {
+
+Meteor.publish('appointment', function() {
   // return Appointments.find({userId: {$exists: false}});
+
   return Appointments.find();
 });
 

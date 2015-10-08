@@ -12,21 +12,21 @@ InboxPage = React.createClass({
     //const listId = this.getParams().listId;
 
     // Subscribe to the tasks we need to render this component
-    //const tasksSubHandle = Meteor.subscribe("todos", listId);
+    const appointments = Meteor.subscribe("appointment");
 
     return {
-      //tasks: Todos.find({ listId: listId }, {sort: {createdAt : -1}}).fetch(),
+      appointments: Appointments.find().fetch()
       //list: Lists.findOne({ _id: listId }),
       //tasksLoading: ! tasksSubHandle.ready()
     };
   },
-
   render() {
     return (
       <div className="page lists-show">
         <HeaderBar
           status={"InboxPage"}
           showLoadingIndicator={this.data.tasksLoading} />
+      <AppointmentList appointments={this.data.appointments}/>
       </div>
     );
   }
