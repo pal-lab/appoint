@@ -40,13 +40,13 @@ AppointmentSettings = React.createClass({
     Meteor.call("appointment/update",this.state.appointment_id,newData);
   },
 
- 
+
   render() {
     let className = "appointment-settings";
 
     let appointmentSettings;
 
-    
+
     if(!this.state.editableAppointment) {
       const earliest= moment(this.props.appointment.earliest).format('L');
       const latest= moment(this.props.appointment.latest).format('L');
@@ -60,14 +60,14 @@ AppointmentSettings = React.createClass({
       )
 
     } else {
-      
+
       appointmentSettings = (
-        
+
         <div>
-           
+
           <form onSubmit={this.handleSubmit}>
-          <label class="item item-input">
-                <span class="input-label">Purpose</span>
+          <label className="item item-input">
+                <span className="input-label">Purpose</span>
             <input
               name="purpose"
               ref="purpose"
@@ -75,8 +75,8 @@ AppointmentSettings = React.createClass({
               onBlur={this.handleBlur}
               value={this.state.purpose}
             /> </label><br/>
-            <label class="item item-input">
-                <span class="input-label">Location</span>
+            <label className="item item-input">
+                <span className="input-label">Location</span>
             <input
               name="location"
               ref="location"
@@ -84,8 +84,8 @@ AppointmentSettings = React.createClass({
               onBlur={this.handleBlur}
               value={this.state.location}
             /></label><br/>
-              <label class="item item-input">
-                <span class="input-label">Duration</span>
+              <label className="item item-input">
+                <span className="input-label">Duration</span>
                 <input
                   name="duration"
                   ref="duration"
@@ -93,12 +93,12 @@ AppointmentSettings = React.createClass({
                   onBlur={this.handleBlur}
                   value={this.state.duration}/>
               </label>
-              
+
           </form>
         </div>
 
       )
-    
+
     }
 
     return appointmentSettings;
