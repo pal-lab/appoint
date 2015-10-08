@@ -1,8 +1,9 @@
+/*jshint esnext: true */
 AppointmentSettings = React.createClass({
   propTypes: {
     appointment: React.PropTypes.object.isRequired
   },
- 
+
   render() {
     let className = "appointment-settings";
 
@@ -16,7 +17,7 @@ AppointmentSettings = React.createClass({
         <p className="location">Location: {this.props.appointment.location}</p>
         <p className="duration">Duration: {this.props.appointment.duration}</p>
         <p className="date">Earliest: {earliest} | Latest: {latest} </p>
-        
+
       </div>
     );
   }

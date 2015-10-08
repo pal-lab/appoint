@@ -1,8 +1,9 @@
+/*jshint esnext: true */
 AppointmentMembers = React.createClass({
   propTypes: {
     invitees: React.PropTypes.object.isRequired
   },
- 
+
   render() {
     let className = "appointment-members";
 
@@ -11,7 +12,7 @@ AppointmentMembers = React.createClass({
         <button type="submit" className="btn-primary">
                 Members
         </button>
-    
+
       </div>
     );
   }

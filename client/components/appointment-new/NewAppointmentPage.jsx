@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 const {
   Navigation,
   State
@@ -9,7 +10,7 @@ AppointmentPage = React.createClass({
   getMeteorData() {
     // Get appointment ID from ReactRouter
     const appointment_id = this.getParams().appointment_id;
-    
+
 
     // Subscribe to the appointment we need to render this component
     const appointmentSubHandle = Meteor.subscribe("appointment", appointment_id);
@@ -22,7 +23,7 @@ AppointmentPage = React.createClass({
 
   render() {
     const appointment = this.data.appointment;
-    
+
     if (! appointment) {
       return <AppNotFound />;
     }
