@@ -19,7 +19,7 @@ HeaderBar = React.createClass({
       self.transitionTo('appointmentpage', {appointment_id: data});
 
     });
-        
+
   },
   render() {
 
@@ -59,6 +59,15 @@ HeaderBar = React.createClass({
           <MenuOpenToggle />
           <div className="wrapper-message">
             <div className="title-message">Appointment</div>
+          </div>
+        </nav>
+      );
+    } else if (this.props.status === 'ProposalPage') {
+   nav = (
+        <nav>
+          <MenuOpenToggle />
+          <div className="wrapper-message">
+            <div className="title-message">Possible Appointments </div>
           </div>
         </nav>
       );
