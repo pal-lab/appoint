@@ -11,7 +11,7 @@ const routes = (
     <Route name="addMemberPage" path="/newappoint/addmembers" handler={AddMemberPage} />
     <Route name="join" path="/join" handler={AuthJoinPage} />
     <Route name="signin" path="/signin" handler={AuthSignInPage} />
-    <Route name="newAppointmentPage" path="/NewAppointmentPage" handler={NewAppointmentPage} />
+    <Route name="newAppointmentPage" path="/newappointmentpage" handler={NewAppointmentPage} />
   </Route>
 )
 

@@ -14,13 +14,14 @@ AddMemberList = React.createClass({
       return (
         <AddMemberItem
           // firstname={ member.firstname }/>
-          key = { member.id }
-          firstname = { member.firstname }/>
+          key = { member._id}
+          firstname = { member.profile.firstname }
+          lastname = { member.profile.lastname}/>
       );
     });
 
     return (
-      <div className="content-scrollable list-items">
+      <div className="list-items">
         { allMembers }
       </div>
     );
