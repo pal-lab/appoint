@@ -12,7 +12,7 @@ data.accountJohannes = {
 };
 
 data.accountJorrit = {
-  email: 'jk@appoint.de',
+  email: 'jp@appoint.de',
   password: 'asdasd',
   profile: {
     firstname: 'Jorrit',
@@ -21,7 +21,7 @@ data.accountJorrit = {
 };
 
 data.accountGregor = {
-  email: 'jk@appoint.de',
+  email: 'ga@appoint.de',
   password: 'asdasd',
   profile: {
     firstname: 'Gregor',
@@ -30,7 +30,7 @@ data.accountGregor = {
 };
 
 data.accountSven = {
-  email: 'jk@appoint.de',
+  email: 'sr@appoint.de',
   password: 'asdasd',
   profile: {
     firstname: 'Sven',
@@ -165,13 +165,13 @@ Meteor.startup(function() {
     var acId4 = Accounts.createUser(data.accountGregor);
     console.log(acId4);
   }
+  console.log(Meteor.users.find().count());
+
   console.log('load appointments');
   if (Appointments.find().count() === 0) {
-    var apId1 = Appointments.insert(data.appointmentScheduled);
-    console.log(apId1);
-    var apId2 = Appointments.insert(data.appointmentPending);
-    console.log(apId2);
-    var apId3 = Appointments.insert(data.appointmentApproved);
-    console.log(apId3);
+    Appointments.insert(data.appointmentScheduled);
+    Appointments.insert(data.appointmentPending);
+    Appointments.insert(data.appointmentApproved);
   }
+  console.log(Appointments.find().count());
 });
