@@ -16,6 +16,13 @@ Meteor.publish('users', function() {
   });
 });
 
+Meteor.publish('appointmentinvitees', function(apId) {
+  check(apId, String);
+
+  return AppointmentInvitees.find({appointment: apId});
+});
+
+
 // Meteor.publish('privateLists', function() {
 //   if (this.userId) {
 //     return Lists.find({userId: this.userId});
