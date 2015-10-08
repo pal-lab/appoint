@@ -15,7 +15,7 @@ AppointmentList = React.createClass({
     });
 
     return (
-      <div className="content-scrollable list-items">
+      <div className="list-items">
         { allAppointments }
       </div>
     );
