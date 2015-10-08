@@ -7,6 +7,14 @@ HeaderBar = React.createClass({
     status: React.PropTypes.string.isRequired,
     tasksLoading: React.PropTypes.bool,
   },
+
+   onSubmitNewAppointment(event) {
+    event.preventDefault();
+
+    const appointment = {latest: '2015-12-29 12:33', earliest: '2015-10-20 12:30', purpose: 'ffdsfdsfgsgfg', location: 'asd', duration: 180}
+
+    Meteor.call('appointment/create', appointment, ['asd']);
+  },
   render() {
 
     let nav;
@@ -15,12 +23,8 @@ HeaderBar = React.createClass({
         <nav>
           <div className="wrapper-message">
             <div className="title-message">Inbox</div>
-            <span className="icon-add" />
-            <Link
-            className="newappointment"
-            to="newAppointmentPage">
-            New Appointment
-          </Link>
+            <span className="icon-add" onClick={ this.onSubmitNewAppointment }/>
+
           </div>
         </nav>
       );
