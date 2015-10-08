@@ -8,7 +8,7 @@ AppointmentList = React.createClass({
     render() {
         var allAppointments = this.props.appointments.map((appointment) => {
             return (
-                <p>{appointment.title}</p>
+                <p>{appointment.purpose}</p>
             );
         });
 
