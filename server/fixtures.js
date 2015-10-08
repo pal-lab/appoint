@@ -2,6 +2,35 @@
 
 var data = {};
 
+data.proposal = function(ap) {
+  return [{
+    date: moment('2015-10-20 10:00').toDate(),
+    appointment: ap,
+    accepted: 2,
+    declined: 1
+  }, {
+    date: moment('2015-10-21 10:00').toDate(),
+    appointment: ap,
+    accepted: 0,
+    declined: 1
+  }, {
+    date: moment('2015-10-19 12:00').toDate(),
+    appointment: ap,
+    accepted: 2,
+    declined: 1
+  }, {
+    date: moment('2015-10-19 14:00').toDate(),
+    appointment: ap,
+    accepted: 2,
+    declined: 1
+  }, {
+    date: moment('2015-10-19 10:00').toDate(),
+    appointment: ap,
+    accepted: 2,
+    declined: 1
+  }];
+};
+
 data.accounts = [{
   email: 'admin@appoint.de',
   password: 'asdasd',
@@ -9,7 +38,7 @@ data.accounts = [{
     firstname: 'Admin',
     lastname: 'Istrator'
   }
-},{
+}, {
   email: 'jk@appoint.de',
   password: 'asdasd',
   profile: {
@@ -76,28 +105,33 @@ data.appointments = [function(initiator) {
 }];
 
 var dropData = function(callback) {
-  Appointments.remove( { } );
-  AppointmentInvitees.remove( { } );
-  Meteor.users.remove( { } );
+  Appointments.remove({});
+  AppointmentInvitees.remove({});
+  Meteor.users.remove({});
   callback();
 };
 
 var loadFixtures = function(force) {
   var adminId = null;
-  if (Meteor.users.find().count() === 0 || force ===true) {
+  if (Meteor.users.find().count() === 0 || force === true) {
     _.each(data.accounts, function(account) {
       var id = Accounts.createUser(account);
-      if(adminId === null) { adminId = id }
+      if (adminId === null) {
+        adminId = id
+      }
     });
   }
-  console.log('Current Users: '+ Meteor.users.find().count());
+  console.log('Current Users: ' + Meteor.users.find().count());
 
-  if (Appointments.find().count() === 0 || force ===true) {
+  if (Appointments.find().count() === 0 || force === true) {
     _.each(data.appointments, function(ap) {
-      Appointments.insert(ap(adminId));
+      var apid = Appointments.insert(ap(adminId));
+      _.each(data.proposal(apid), function(app) {
+        AppointmentProposals.insert(app);
+      });
     });
   }
-  console.log('Current Appointments: '+ Appointments.find().count());
+  console.log('Current Appointments: ' + Appointments.find().count());
 };
 
 

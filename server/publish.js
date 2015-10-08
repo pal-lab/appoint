@@ -1,29 +1,50 @@
 Meteor.publish('appointment', function() {
-  // return Appointments.find({userId: {$exists: false}});
-
-  // Appointments.find({}, function(err, results) {
-  //   console.log(results.invitee);
-  // });
-
-  return Appointments.find({ initiator: this.userId });
+  if (this.userId) {
+    return Appointments.find({
+      initiator: this.userId
+    });
+  } else {
+    this.ready();
+  }
 });
 
 Meteor.publish('users', function() {
   // return Appointments.find({userId: {$exists: false}});
-  return Meteor.users.find({}, {
-    emails: 1,
-    profile: 1
-  });
+  if (this.userId) {
+
+    return Meteor.users.find({}, {
+      emails: 1,
+      profile: 1
+    });
+  } else {
+    this.ready();
+  }
 });
 
 Meteor.publish('appointmentinvitees', function(apId) {
   check(apId, String);
+  if (this.userId) {
+    var cursor = AppointmentInvitees.find({
+      appointment: apId
+    });
 
-  var cursor = AppointmentInvitees.find({
-    appointment: apId
-  });
+    return AppointmentInvitees.publishJoinedCursors(cursor);
+  } else {
+    this.ready();
+  }
+});
 
-  return AppointmentInvitees.publishJoinedCursors(cursor);
+Meteor.publish('appointmentproposal', function(apId) {
+  check(apId, String);
+  if (this.userId) {
+    var cursor = AppointmentProposals.find({
+      appointment: apId
+    });
+
+    return AppointmentInvitees.publishJoinedCursors(cursor);
+  } else {
+    this.ready();
+  }
 });
 
 
