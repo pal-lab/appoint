@@ -19,4 +19,5 @@ mobile-experience
 mongo
 jquery
 check
+momentjs:moment
 msavin:mongol

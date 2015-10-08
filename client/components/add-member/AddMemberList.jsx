@@ -20,7 +20,7 @@ AddMemberList = React.createClass({
       return (
         <AddMemberItem
           // firstname={ member.firstname }/>
-          firstname = 'Emanuela';
+          firstname = 'Emanuela'
       );
     });
 

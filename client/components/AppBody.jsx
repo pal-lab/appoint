@@ -47,8 +47,8 @@ AppBody = React.createClass({
 
   getMeteorData() {
     const subHandles = [
-      Meteor.subscribe("publicLists"),
-      Meteor.subscribe("privateLists")
+      //Meteor.subscribe("publicLists"),
+      //Meteor.subscribe("privateLists")
     ];
 
     const subsReady = _.all(subHandles, function (handle) {
@@ -65,7 +65,6 @@ AppBody = React.createClass({
 
     return {
       subsReady: subsReady,
-      lists: Lists.find({}, { sort: {createdAt: -1} }).fetch(),
       currentUser: Meteor.user(),
       disconnected: ShowConnectionIssues.get() && (! Meteor.status().connected)
     };

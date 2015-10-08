@@ -1,51 +1,177 @@
 // if the database is empty on server start, create some sample data.
-Meteor.startup(function () {
-  if (Lists.find().count() === 0) {
-    var data = [
-      {name: "Meteor Principles",
-       items: ["Data on the Wire",
-         "One Language",
-         "Database Everywhere",
-         "Latency Compensation",
-         "Full Stack Reactivity",
-         "Embrace the Ecosystem",
-         "Simplicity Equals Productivity"
-       ]
-      },
-      {name: "Languages",
-       items: ["Lisp",
-         "C",
-         "C++",
-         "Python",
-         "Ruby",
-         "JavaScript",
-         "Scala",
-         "Erlang",
-         "6502 Assembly"
-         ]
-      },
-      {name: "Favorite Scientists",
-       items: ["Ada Lovelace",
-         "Grace Hopper",
-         "Marie Curie",
-         "Carl Friedrich Gauss",
-         "Nikola Tesla",
-         "Claude Shannon"
-       ]
-      }
-    ];
 
-    var timestamp = (new Date()).getTime();
-    _.each(data, function(list) {
-      var list_id = Lists.insert({name: list.name,
-        incompleteCount: list.items.length});
+var data = {};
 
-      _.each(list.items, function(text) {
-        Todos.insert({listId: list_id,
-                      text: text,
-                      createdAt: new Date(timestamp)});
-        timestamp += 1; // ensure unique timestamp.
-      });
-    });
+data.accountJohannes = {
+  email: 'jk@appoint.de',
+  password: 'asdasd',
+  profile: {
+    firstname: 'Johannes',
+    lastname: 'Klumpe'
+  }
+};
+
+data.accountJorrit = {
+  email: 'jk@appoint.de',
+  password: 'asdasd',
+  profile: {
+    firstname: 'Jorrit',
+    lastname: 'Posor'
+  }
+};
+
+data.accountGregor = {
+  email: 'jk@appoint.de',
+  password: 'asdasd',
+  profile: {
+    firstname: 'Gregor',
+    lastname: 'Albrecht'
+  }
+};
+
+data.accountSven = {
+  email: 'jk@appoint.de',
+  password: 'asdasd',
+  profile: {
+    firstname: 'Sven',
+    lastname: 'Rossmann'
+  }
+};
+
+data.appointmentApproved = {
+  earliest: moment('2015-10-12').toDate(),
+  latest: moment('2015-10-29').toDate(),
+  purpose: 'Appoint MVP bauen',
+  location: 'Praha',
+  duration: moment.duration(4, 'days').asMinutes(),
+  invitees: [{
+    status: 'voted',
+    account: data.accountJohannes
+  }, {
+    status: 'voted',
+    account: data.accountSven
+  }, {
+    status: 'voted',
+    account: data.accountJorrit
+  }, {
+    status: 'approved',
+    account: data.accountGregor
+  }],
+  initiator: data.accountJohannes,
+  status: 'approved',
+  proposals: [{
+    timeStamp: moment('2015-10-13 13:30').toDate(),
+    accepted: 2,
+    declined: 1
+  }, {
+    timeStamp: moment('2015-10-14 13:30').toDate(),
+    accepted: 0,
+    declined: 3
+  }, {
+    timeStamp: moment('2015-10-15 13:30').toDate(),
+    accepted: 0,
+    declined: 3
+  }, {
+    timeStamp: moment('2015-10-16 13:30').toDate(),
+    accepted: 0,
+    declined: 3
+  }, {
+    timeStamp: moment('2015-10-17 13:30').toDate(),
+    accepted: 3,
+    declined: 0
+  }]
+};
+
+data.appointmentPending = {
+  earliest: moment('2015-10-13').toDate(),
+  latest: moment('2015-10-14').toDate(),
+  purpose: 'Essen und Trinken',
+  location: 'Prag',
+  duration: moment.duration(175, 'minutes').asMinutes(),
+  invitees: [{
+    status: 'declined',
+    account: data.accountJohannes
+  }, {
+    status: 'approved',
+    account: data.accountSven
+  }, {
+    status: 'approved',
+    account: data.accountJorrit
+  }, {
+    status: 'pending',
+    account: data.accountGregor
+  }],
+  initiator: data.accountJohannes,
+  status: 'pending',
+  proposals: []
+};
+
+
+data.appointmentScheduled = {
+  earliest: moment('2015-10-12').toDate(),
+  latest: moment('2015-10-29').toDate(),
+  purpose: 'Appoint MVP bauen',
+  location: 'Praha',
+  duration: moment.duration(4, 'days').asMinutes(),
+  invitees: [{
+    status: 'voted',
+    account: data.accountJohannes
+  }, {
+    status: 'voted',
+    account: data.accountSven
+  }, {
+    status: 'voted',
+    account: data.accountJorrit
+  }, {
+    status: 'approved',
+    account: data.accountGregor
+  }],
+  initiator: data.accountJohannes,
+  status: 'approved',
+  proposals: [{
+    timeStamp: moment('2015-10-13 13:30').toDate(),
+    accepted: 2,
+    declined: 1
+  }, {
+    timeStamp: moment('2015-10-14 13:30').toDate(),
+    accepted: 0,
+    declined: 3
+  }, {
+    timeStamp: moment('2015-10-15 13:30').toDate(),
+    accepted: 0,
+    declined: 3
+  }, {
+    timeStamp: moment('2015-10-16 13:30').toDate(),
+    accepted: 0,
+    declined: 3
+  }, {
+    timeStamp: moment('2015-10-17 13:30').toDate(),
+    accepted: 3,
+    declined: 0
+  }]
+};
+
+
+
+Meteor.startup(function() {
+  console.log('load accounts');
+  if (Meteor.users.find().count() === 0) {
+    var acId1 = Accounts.createUser(data.accountJohannes);
+    console.log(acId1);
+    var acId2 = Accounts.createUser(data.accountSven);
+    console.log(acId2);
+    var acId3 = Accounts.createUser(data.accountJorrit);
+    console.log(acId3);
+    var acId4 = Accounts.createUser(data.accountGregor);
+    console.log(acId4);
+  }
+  console.log('load appointments');
+  if (Appointments.find().count() === 0) {
+    var apId1 = Appointments.insert(data.appointmentScheduled);
+    console.log(apId1);
+    var apId2 = Appointments.insert(data.appointmentPending);
+    console.log(apId2);
+    var apId3 = Appointments.insert(data.appointmentApproved);
+    console.log(apId3);
   }
 });

@@ -4,7 +4,7 @@ HeaderBar = React.createClass({
   mixins: [ReactRouter.Navigation],
 
   propTypes: {
-    title: React.PropTypes.string.isRequired,
+    status: React.PropTypes.string.isRequired,
     tasksLoading: React.PropTypes.bool
   },
 
@@ -13,7 +13,7 @@ HeaderBar = React.createClass({
       nav = (
         <nav>
           <div className="wrapper-message">
-            <div className="title-message">{this.props.title}</div>
+            <div className="title-message">{this.props.status}</div>
           </div>
         </nav>
       );
