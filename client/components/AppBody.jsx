@@ -47,8 +47,7 @@ AppBody = React.createClass({
 
   getMeteorData() {
     const subHandles = [
-      //Meteor.subscribe("publicLists"),
-      //Meteor.subscribe("privateLists")
+        Meteor.subscribe("appointment")
     ];
 
     const subsReady = _.all(subHandles, function (handle) {
@@ -60,7 +59,7 @@ AppBody = React.createClass({
     // If we are at the root route, and the subscrioptions are ready
     if (routes.length > 1 && routes[1].isDefault && subsReady) {
       // Redirect to the route for the first todo list
-      this.replaceWith("InboxPage");
+      this.replaceWith("inboxPage");
     }
 
     return {
