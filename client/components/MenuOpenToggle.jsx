@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 MenuOpenToggle = React.createClass({
   contextTypes: {
     toggleMenuOpen: React.PropTypes.func.isRequired

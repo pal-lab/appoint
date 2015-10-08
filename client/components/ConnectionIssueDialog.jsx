@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 ConnectionIssueDialog = React.createClass({
   render() {
     // If we needed to display multiple kinds of notifications, we would split
