@@ -15,7 +15,7 @@ HeaderBar = React.createClass({
         <nav>
           <div className="wrapper-message">
             <div className="title-message">Inbox</div>
-            <span className="icon-add" />
+            <span className="icon-add" to NewAppointmentPage/>
           </div>
         </nav>
       );
