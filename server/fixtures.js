@@ -37,6 +37,13 @@ data.accounts = [{
     firstname: 'Sven',
     lastname: 'Rossmann'
   }
+}, {
+  email: 'ga@appoint.de',
+  password: 'asdasd',
+  profile: {
+    firstname: 'Gregor',
+    lastname: 'Albrecht'
+  }
 }];
 
 data.appointments = [function(initiator) {
