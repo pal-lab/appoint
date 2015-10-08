@@ -26,11 +26,9 @@ AddMemberPage = React.createClass({
     return (
       <div className="page lists-show">
         <HeaderBar
-          // title={this.data.appointment.purpose}
           status={"AddMemberPage"}
           showLoadingIndicator = { this.data.appointmentLoading }
           />
-        <h1>{ this.data.appointment }</h1>
 
         <div className="content-scrollable list items addusers">
           <AddMemberList
