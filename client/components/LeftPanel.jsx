@@ -10,16 +10,20 @@ LeftPanel = React.createClass({
       <section id="menu">
         <UserSidebarSection user={ this.props.currentUser } />
         <div className="list-todos">
-
-            <Link
-              className="list-todo"
-              to="inboxpage">
-              Inbox
-            </Link>
           <Link
             className="list-todo"
-            to="addMember">
+            to="inboxPage">
+            Inbox
+          </Link>
+          <Link
+            className="list-todo"
+            to="addMemberPage">
             Invite a friend
+          </Link>
+          <Link
+            className="list-todo"
+            to="newAppointmentPage">
+            New Appoint
           </Link>
         </div>
       </section>
