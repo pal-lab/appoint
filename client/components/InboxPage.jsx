@@ -11,9 +11,6 @@ InboxPage = React.createClass({
     // Get list ID from ReactRouter
     //const listId = this.getParams().listId;
 
-    // Subscribe to the tasks we need to render this component
-    const appointments = Meteor.subscribe("appointment");
-
     return {
       appointments: Appointments.find().fetch()
       //list: Lists.findOne({ _id: listId }),

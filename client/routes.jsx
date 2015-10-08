@@ -12,7 +12,7 @@ const routes = (
     <Route name="join" path="/join" handler={AuthJoinPage} />
     <Route name="signin" path="/signin" handler={AuthSignInPage} />
     <Route name="newAppointmentPage" path="/newappointmentpage" handler={NewAppointmentPage} />
-      <DefaultRoute handler={AppLoading} />
+    <DefaultRoute handler={AppLoading} />
     <NotFoundRoute handler={AppNotFound} />
   </Route>
 )
