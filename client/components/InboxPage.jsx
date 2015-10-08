@@ -20,7 +20,6 @@ InboxPage = React.createClass({
       //tasksLoading: ! tasksSubHandle.ready()
     };
   },
-
   render() {
     return (
       <div className="page lists-show">
