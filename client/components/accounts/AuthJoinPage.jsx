@@ -17,6 +17,8 @@ AuthJoinPage = React.createClass({
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirm = event.target.confirm.value;
+    const firstname = event.target.firstname.value;
+    const lastname = event.target.lastname.value;
 
     const errors = {};
 
@@ -26,6 +28,13 @@ AuthJoinPage = React.createClass({
 
     if (! password) {
       errors.password = 'Password required';
+    }
+
+    if (! firstname) {
+      errors.firstname = 'Firstname required';
+    }
+    if (! lastname) {
+      errors.lastname = 'Lastname required';
     }
 
     if (confirm !== password) {
@@ -43,7 +52,8 @@ AuthJoinPage = React.createClass({
 
     Accounts.createUser({
       email: email,
-      password: password
+      password: password,
+      profile: {firstname: firstname, lastname: lastname}
     }, (error) => {
       if (error) {
         this.setState({
