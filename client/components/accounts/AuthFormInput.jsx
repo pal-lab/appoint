@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 AuthFormInput = React.createClass({
   propTypes: {
     hasError: React.PropTypes.bool,

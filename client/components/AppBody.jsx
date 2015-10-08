@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 const {
   Link,
   Navigation,
@@ -76,23 +77,6 @@ AppBody = React.createClass({
     });
   },
 
-  addList() {
-    Meteor.call("/lists/add", (err, res) => {
-      if (err) {
-        // Not going to be too fancy about error handling in this example app
-        alert("Error creating list.");
-        return;
-      }
-
-      // Go to the page for the new list
-      this.transitionTo('todoList', { listId: res });
-    });
-  },
-
-  getListId() {
-    return this.getParams().listId;
-  },
-
   render() {
     let appBodyContainerClass = "";
 
@@ -107,11 +91,8 @@ AppBody = React.createClass({
     return (
       <div id="container" className={ appBodyContainerClass }>
 
-        <LeftPanel 
-          currentUser={this.data.currentUser} 
-          onAddList={this.addList}
-          lists={this.data.lists}
-          activeListId={this.getListId()} />
+        <LeftPanel
+          currentUser={this.data.currentUser} />
 
         { this.data.disconnected ? <ConnectionIssueDialog /> : "" }
 

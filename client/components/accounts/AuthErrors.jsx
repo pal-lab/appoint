@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 AuthErrors = React.createClass({
   propTypes: {
     errors: React.PropTypes.object
