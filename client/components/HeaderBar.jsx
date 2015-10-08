@@ -11,7 +11,15 @@ HeaderBar = React.createClass({
    onSubmitNewAppointment(event) {
     event.preventDefault();
 
-    Meteor.call('appointment/create');
+    let self = this;
+
+    Meteor.call('appointment/create', function(err, data) {
+      if (err)
+        console.log(err);
+      self.transitionTo('appointmentpage', {appointment_id: data});
+
+    });
+        
   },
   render() {
 
