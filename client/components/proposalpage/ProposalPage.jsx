@@ -1,10 +1,17 @@
+/*jshint esnext: true */
+const {
+  Navigation,
+  State
+} = ReactRouter;
+
 ProposalPage = React.createClass({
   mixins: [ReactMeteorData, Navigation, State],
 
   getMeteorData() {
     // Get list ID from ReactRouter
-    //const listId = this.getParams().listId;
-
+    const appointment_id = this.getParams().appointment_id;
+    const proposalsSubHandle = Meteor.subscribe("appointmentproposal", appointment_id);
+    console.log(appointment_id);
     return {
       proposals: AppointmentProposals.find().fetch()
       //list: Lists.findOne({ _id: listId }),
