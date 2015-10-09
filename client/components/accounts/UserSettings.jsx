@@ -3,10 +3,35 @@ UserSettings = React.createClass({
     proposal: React.PropTypes.object.isRequired,
   },
 
-  
+onSubmitChangeNames(event) {
+    event.preventDefault();
+    const firstnameinput = React.findDOMNode(this.refs.firstname);
+    const lastnameinput = React.findDOMNode(this.refs.lastname);
+    console.log(firstnameinput.value);
+    console.log(lastnameinput.value);
+    if(firstnameinput.value !='' && lastnameinput.value !='') {
+      Meteor.call('user/changenames', firstnameinput.value, lastnameinput.value);
+    }
+},
+
   render() {
+    let className = "user-settings";
+    const changeFirstNameForm = (
+      <form className="todo-new input-symbol"
+          onSubmit={ this.onSubmitChangeNames}>
+        <input type="text"  name="text" ref="firstname" placeholder="enter new first name" />
+      </form>
+    );
+     const changeLastNameForm = (
+      <form className="todo-new input-symbol"
+          onSubmit={ this.onSubmitChangeNames}>
+        <input type="text" name="text" ref="lastname" placeholder="enter new last name" />
+      </form>
+    );
     return (
       <div className="page">
+      {changeFirstNameForm}
+      {changeLastNameForm}
         <Profile />
         <SettingsList />
       </div>
@@ -27,7 +52,7 @@ Profile = React.createClass({
     let choice = Math.round(Math.random() * 10) + 1;
     let firstname = this.data.user.profile.firstname;
     let msg;
-    
+
     switch (choice) {
         case 1:
           return 'Okay, lets do it. We CAN change your user name together you little hero';
@@ -59,7 +84,7 @@ Profile = React.createClass({
       )
     }
     let initials = this.data.user.profile.firstname.charAt(0).concat(this.data.user.profile.lastname.charAt(0));
-    
+
     const divStyle = {
       minWidth: '500px',
       textAlign: 'center'
@@ -72,16 +97,15 @@ Profile = React.createClass({
         </div>
         <div className="login-wrapper">
           Hallo, &nbsp;{ this.data.user.profile.firstname }! <br/>
-          
+
         </div>
         <div className="wide" style={divStyle}>
           { this.funnyUserInteractions() }
-        </div> 
+        </div>
       </div>
     )
   }
 })
-
 
 SettingsList = React.createClass({
   getDefaultProps() {
