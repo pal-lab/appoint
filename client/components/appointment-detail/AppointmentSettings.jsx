@@ -60,11 +60,10 @@ AppointmentSettings = React.createClass({
       )
 
     } else {
-
+      const earliest= moment(this.props.appointment.earliest).format('L');
+      const latest= moment(this.props.appointment.latest).format('L');
       appointmentSettings = (
-
         <div>
-
           <form onSubmit={this.handleSubmit}>
           <label className="item item-input">
                 <span className="input-label">Purpose</span>
@@ -93,8 +92,10 @@ AppointmentSettings = React.createClass({
                   onBlur={this.handleBlur}
                   value={this.state.duration}/>
               </label>
-
+              
           </form>
+          <p className="date">Earliest: {earliest} | Latest: {latest} </p>
+          {{> quickForm id="types1" schema=typesSchema1}}
         </div>
 
       )
