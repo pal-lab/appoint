@@ -1,3 +1,4 @@
+const Link = ReactRouter.Link;
 AppointmentSettings = React.createClass({
   propTypes: {
     appointment: React.PropTypes.object.isRequired,
@@ -60,11 +61,10 @@ AppointmentSettings = React.createClass({
       )
 
     } else {
-
+      const earliest= moment(this.props.appointment.earliest).format('L');
+      const latest= moment(this.props.appointment.latest).format('L');
       appointmentSettings = (
-
         <div>
-
           <form onSubmit={this.handleSubmit}>
           <label className="item item-input">
                 <span className="input-label">Purpose</span>
@@ -93,8 +93,17 @@ AppointmentSettings = React.createClass({
                   onBlur={this.handleBlur}
                   value={this.state.duration}/>
               </label>
-
+              
           </form>
+
+          <Link
+          className={ className }
+          key={ this.props.appointment._id }
+          to="proposalpage"
+          params={{ appointment_id: this.props.appointment._id }}>
+            proposals
+        </Link>
+
         </div>
 
       )

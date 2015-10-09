@@ -11,7 +11,6 @@ ProposalPage = React.createClass({
     // Get list ID from ReactRouter
     const appointment_id = this.getParams().appointment_id;
     const proposalsSubHandle = Meteor.subscribe("appointmentproposal", appointment_id);
-    console.log(appointment_id);
     return {
       proposals: AppointmentProposals.find().fetch()
       //list: Lists.findOne({ _id: listId }),

@@ -10,8 +10,8 @@ AppointmentItem = React.createClass({
     let className = "list-item";
 
     return (
-      <div className={ className }>
-
+      <li>
+        
         <Link
           className={ className }
           key={ this.props.appointment._id }
@@ -19,8 +19,9 @@ AppointmentItem = React.createClass({
           params={{ appointment_id: this.props.appointment._id }}>
             {this.props.appointment.purpose}
         </Link>
-
-      </div>
+        
+        
+      </li>
     );
   }
 });
