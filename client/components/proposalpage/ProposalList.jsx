@@ -1,8 +1,10 @@
 /*jshint esnext: true */
+const Link = ReactRouter.Link;
 
 ProposalList = React.createClass({
     propTypes: {
-        proposals: React.PropTypes.array.isRequired
+      proposals: React.PropTypes.array.isRequired,
+      appointment: React.PropTypes.object.isRequired
     },
 
     render() {
@@ -13,9 +15,20 @@ ProposalList = React.createClass({
           proposal={ proposal } />
       );
     });
+
     return (
-      <div className="list-items">
-        { allproposals }
+      <div>
+        <Link
+            className="btn-primary"
+            key={ this.props.appointment._id }
+            to="appointmentpage"
+            params={{ appointment_id: this.props.appointment._id }}>
+              Zurück zu {this.props.appointment.purpose}
+          </Link>
+
+        <div className="list-items">
+          { allproposals }
+        </div>
       </div>
     );
   }

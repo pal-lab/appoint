@@ -12,9 +12,8 @@ ProposalPage = React.createClass({
     const appointment_id = this.getParams().appointment_id;
     const proposalsSubHandle = Meteor.subscribe("appointmentproposal", appointment_id);
     return {
-      proposals: AppointmentProposals.find().fetch()
-      //list: Lists.findOne({ _id: listId }),
-      //tasksLoading: ! tasksSubHandle.ready()
+      proposals: AppointmentProposals.find().fetch(),
+      appointment: Appointments.findOne({ _id: appointment_id }),
     };
   },
 
@@ -26,7 +25,10 @@ ProposalPage = React.createClass({
           showLoadingIndicator={this.data.tasksLoading} />
 
         <div className="content-scrollable">
-          <ProposalList proposals={this.data.proposals}/>
+          <ProposalList
+            proposals={this.data.proposals}
+            appointment = { this.data.appointment }
+            />
         </div>
       </div>
     );
