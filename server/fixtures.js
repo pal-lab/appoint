@@ -162,6 +162,7 @@ data.push({
   }
 });
 
+
 // Makrelen Party
 // supposed to be in voted
 data.push({
@@ -374,6 +375,32 @@ data.push({
     }];
   }
 });
+
+
+// Ich lade euch ein Freunde
+// invited
+data.push({
+  appointment: function(initiator) {
+    return {
+      earliest: moment('2015-10-12').toDate(),
+      latest: moment('2015-10-29').toDate(),
+      purpose: 'Ich lade euch ein Freunde',
+      location: 'Praha',
+      duration: moment.duration(2, 'hours').asMinutes(),
+      initiator: initiator
+    };
+  },
+  invitees: [0, 1],
+
+  events: function(ap, u1, u2, u3, u4, u5) {
+    return [{
+      type: 'invited',
+      appointment: ap,
+      account: u1
+    }];
+  }
+});
+
 
 var dropData = function(callback) {
   Appointments.remove({});
