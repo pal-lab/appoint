@@ -21,15 +21,13 @@ Meteor.publish('appointment', function() {
   }
 });
 
-
 Meteor.publish('appointmentinvitees', function(apId) {
-  check(apId, String);
   if (this.userId) {
-    var cursor = AppointmentInvitees.find({
-      appointment: apId
-    });
 
-    return AppointmentInvitees.publishJoinedCursors(cursor);
+    return Meteor.users.find({ 'profile.invitations': { $in: [ apId ] } }, {
+      emails: 1,
+      profile: 1
+    });
   } else {
     this.ready();
   }

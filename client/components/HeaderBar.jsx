@@ -67,7 +67,7 @@ HeaderBar = React.createClass({
         <nav>
           <MenuOpenToggle />
           <div className="wrapper-message">
-            <div className="title-message">Possible Appointments </div>
+            <div className="title-message">Proposal Dates </div>
           </div>
         </nav>
       );
