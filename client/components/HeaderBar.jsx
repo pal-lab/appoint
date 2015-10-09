@@ -26,51 +26,71 @@ HeaderBar = React.createClass({
     let nav;
     if (this.props.status === 'InboxPage') {
       nav = (
-        <nav>
-          <MenuOpenToggle />
-          <div className="wrapper-message">
+        <nav className="top-nav">
+          <div className="col-xs-3 col-flex-center">
+            <MenuOpenToggle />
+          </div>
+          <div className="col-xs-6 col-flex-center">
             <div className="title-message">Inbox</div>
-            <span className="icon-add" onClick={ this.onSubmitNewAppointment }/>
-
+          </div>
+          <div className="col-xs-3 col-flex-center">
+            <button onClick={ this.onSubmitNewAppointment } className="btn btn-primary">
+              <span className="glyphicon glyphicon-plus"></span>
+              NEW
+            </button>
           </div>
         </nav>
       );
     } else if (this.props.status === 'NewAppointmentPage') {
    nav = (
-        <nav>
-          <MenuOpenToggle />
-          <div className="wrapper-message">
+        <nav className="top-nav">
+          <div className="col-xs-3 col-flex-center">
+            <MenuOpenToggle />
+          </div>
+          <div className="col-xs-6 col-flex-center">
             <div className="title-message">New Appointment</div>
+          </div>
+          <div className="col-xs-3 col-flex-center">
           </div>
         </nav>
       );
     } else if (this.props.status === 'AddMemberPage') {
    nav = (
-        <nav>
-          <MenuOpenToggle />
-          <div className="wrapper-message">
+        <nav className="top-nav">
+          <div className="col-xs-3 col-flex-center">
+            <MenuOpenToggle />
+          </div>
+          <div className="col-xs-6 col-flex-center">
             <div className="title-message">Add Member</div>
+          </div>
+          <div className="col-xs-3 col-flex-center">
           </div>
         </nav>
       );
     } else if (this.props.status === 'AppointmentPage') {
    nav = (
-        <nav>
-          <MenuOpenToggle />
-          <div className="wrapper-message">
+<nav className="top-nav">
+          <div className="col-xs-3 col-flex-center">
+            <MenuOpenToggle />
+          </div>
+          <div className="col-xs-6 col-flex-center">
             <div className="title-message">Appointment</div>
           </div>
-        </nav>
-      );
+          <div className="col-xs-3 col-flex-center">
+          </div>
+        </nav>      );
     } else if (this.props.status === 'ProposalPage') {
    nav = (
-        <nav>
-          <MenuOpenToggle />
-          <div className="wrapper-message">
-            <div className="title-message">Proposal Dates </div>
+        <nav className="top-nav">
+          <div className="col-xs-3 col-flex-center">
+            <MenuOpenToggle />
           </div>
-        </nav>
-      );
+          <div className="col-xs-6 col-flex-center">
+            <div className="title-message">Proposed Dates</div>
+          </div>
+          <div className="col-xs-3 col-flex-center">
+          </div>
+        </nav>      );
     }
     return nav;
   }
