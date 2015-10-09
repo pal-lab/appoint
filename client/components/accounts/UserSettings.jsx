@@ -23,19 +23,22 @@ Profile = React.createClass({
     }
   },
 
+  
+
   render() {
     if (!this.data.user) {
       return (
         <h2>Please Log in</h2>
       )
     }
+    let initials = this.data.user.profile.firstname.charAt(0).concat(this.data.user.profile.lastname.charAt(0));
     return (
       <div className="profile-wrapper">
         <div className="image-wrapper">
-          <img src={this.data.user.profile.image} />
+          <div className="circle--big">{ initials }</div>
         </div>
         <div className="login-wrapper">
-          Logout
+          Hallo, &nbsp;{ this.data.user.profile.firstname }!
         </div> 
       </div>
     )
