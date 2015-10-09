@@ -25,7 +25,7 @@ AppointmentMembers = React.createClass({
     });
 
     return (
-      <div className="content-scrollable list-items">
+      <div className="list-items">
         { allMembers }
         <button type="submit" className="btn-primary" onClick= {this.handleClick}>
                 Add Members
