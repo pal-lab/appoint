@@ -40,34 +40,23 @@ AddMemberItem = React.createClass({
   render() {
     const memberName = (
       <div className="user">
-        { this.props.member.profile.firstname } { this.props.member.profile.lastname } -> { this.props.member.profile.invitations }
+        { this.props.member.profile.firstname } { this.props.member.profile.lastname }
       </div>
     )
-
-    const itemStyle = {
-      paddingLeft: '20px',
-      lineHeight: '48px',
-      cursor: 'pointer'
-    }
-
-    const iconStyle = {
-      marginRight: '20px',
-      lineHeight: '48px'
-    }
 
     let listItem;
     const isUserInvited = (_.indexOf(this.props.member.profile.invitations, this.props.appointment._id) > -1);
     if(isUserInvited) {
       listItem = (
-        <div className="list-item member" style={itemStyle} onClick={ this.toggleInvite }>
-          <span className="icon-plus" style={iconStyle}></span>
+        <div className="appnt-list-item list-item member" onClick={ this.toggleInvite }>
+          <span className="appnt-icon icon-plus"></span>
           { memberName }
         </div>
       )
     } else {
       listItem = (
-        <div className="list-item member" style={itemStyle} onClick={ this.toggleInvite }>
-          <span className="icon-cross" style={iconStyle}></span>
+        <div className="appnt-list-item list-item member" onClick={ this.toggleInvite }>
+          <span className="appnt-icon icon-cross"></span>
           { memberName }
         </div>
       )
