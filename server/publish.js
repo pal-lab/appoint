@@ -13,9 +13,12 @@ Meteor.publish('users', function() {
 
 Meteor.publish('appointment', function() {
   if (this.userId) {
-    return Appointments.find({
+    var user = Meteor.users.findOne(this.userId);
+    return Appointments.find( {$or : [{
       initiator: this.userId
-    });
+  }, {
+      _id: { $in: user.profile.invitations}
+  }]});
   } else {
     this.ready();
   }
