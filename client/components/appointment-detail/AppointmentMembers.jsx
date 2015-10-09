@@ -21,7 +21,8 @@ AppointmentMembers = React.createClass({
     });
 
     return (
-      <div className="list-items">
+      <div className="invited-friends-list">
+        <h4>Your invited friendz':</h4>
         { allMembers }
       </div>
     );
