@@ -2,11 +2,31 @@
 
 var data = {};
 
-data.events = function(ap, u1, u2, u3) {
+data.events = function(ap, u1, u2, u3, u4, u5) {
   return [{
     type: 'invited',
     appointment: ap,
     account: u1
+  },{
+    type: 'approved',
+    appointment: ap,
+    account: u1
+  },{
+    type: 'approved',
+    appointment: ap,
+    account: u2
+  },{
+    type: 'approved',
+    appointment: ap,
+    account: u3
+  },{
+    type: 'declined',
+    appointment: ap,
+    account: u4
+  },{
+    type: 'declined',
+    appointment: ap,
+    account: u5
   },{
     date: moment('2015-10-20 10:00').toDate(),
     appointment: ap,
@@ -43,17 +63,17 @@ data.events = function(ap, u1, u2, u3) {
     date: moment('2015-10-19 12:00').toDate(),
     appointment: ap,
     account: u2,
-    type: 'declined'
+    type: 'rejected'
   }, {
     date: moment('2015-10-19 14:00').toDate(),
     appointment: ap,
     account: u2,
-    type: 'declined'
+    type: 'rejected'
   }, {
     date: moment('2015-10-19 10:00').toDate(),
     appointment: ap,
     account: u2,
-    type: 'declined'
+    type: 'rejected'
   },
   // u3
   {
@@ -70,7 +90,7 @@ data.events = function(ap, u1, u2, u3) {
     date: moment('2015-10-19 12:00').toDate(),
     appointment: ap,
     account: u3,
-    type: 'declined'
+    type: 'rejected'
   }, {
     date: moment('2015-10-19 14:00').toDate(),
     appointment: ap,
@@ -81,6 +101,25 @@ data.events = function(ap, u1, u2, u3) {
     appointment: ap,
     account: u3,
     type: 'accepted'
+  }];
+};
+
+data.invitees = function(ap, u1, u2, u3, u4, u5) {
+  return [{
+    account: u1,
+    appointment: ap,
+  },{
+    account: u2,
+    appointment: ap,
+  },{
+    account: u3,
+    appointment: ap,
+  },{
+    account: u4,
+    appointment: ap,
+  },{
+    account: u5,
+    appointment: ap,
   }];
 };
 
@@ -208,8 +247,12 @@ var loadFixtures = function(force) {
       _.each(data.proposal(apid), function(app) {
         AppointmentProposals.insert(app);
       });
-      _.each(data.events(apid, data.accounts[0].id, data.accounts[1].id, data.accounts[2].id), function(evnt) {
+      _.each(data.events(apid, data.accounts[0].id, data.accounts[1].id, data.accounts[2].id, data.accounts[3].id, data.accounts[4].id), function(evnt) {
+        evnt.createdAt = new Date;
         AppointmentEvents.insert(evnt);
+      });
+      _.each(data.invitees(apid, data.accounts[0].id, data.accounts[1].id, data.accounts[2].id, data.accounts[3].id, data.accounts[4].id), function(invitee) {
+        AppointmentInvitees.insert(invitee);
       });
     });
   }
