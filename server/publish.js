@@ -37,14 +37,12 @@ Meteor.publish('appointmentinvitees', function(apId) {
 });
 
 
-Meteor.publish('appointmentproposal', function(apId) {
+Meteor.publish('appointmentevents', function(apId) {
   check(apId, String);
   if (this.userId) {
-    var cursor = AppointmentProposals.find({
+    return AppointmentEvents.find({
       appointment: apId
     });
-    return cursor;
-    // return AppointmentProposals.publishJoinedCursors(cursor);
   } else {
     this.ready();
   }

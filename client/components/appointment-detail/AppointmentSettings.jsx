@@ -1,4 +1,5 @@
 const Link = ReactRouter.Link;
+
 AppointmentSettings = React.createClass({
   propTypes: {
     appointment: React.PropTypes.object.isRequired,
@@ -63,48 +64,51 @@ AppointmentSettings = React.createClass({
       const earliest= moment(this.props.appointment.earliest).format('L');
       const latest= moment(this.props.appointment.latest).format('L');
       appointmentSettings = (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-          <label className="item item-input">
-                <span className="input-label">Purpose</span>
-            <input
-              name="purpose"
-              ref="purpose"
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
-              value={this.state.purpose}
-            /> </label><br/>
-            <label className="item item-input">
-                <span className="input-label">Location</span>
-            <input
-              name="location"
-              ref="location"
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
-              value={this.state.location}
-            /></label><br/>
-              <label className="item item-input">
-                <span className="input-label">Duration</span>
+        <div className="row" style={{paddingTop: '50px'}}>
+          <div className="col-xs-12 col-md-8 col-md-offset-2">
+            <form onSubmit={this.handleSubmit}>
+              <div className="form-group">
+                <label>Purpose</label>
                 <input
-                  name="duration"
-                  ref="duration"
+                  type="text"
+                  className="form-control"
+                  id="purpose"
+                  ref="purpose"
+                  placeholder="Give me a purpose"
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
-                  value={this.state.duration}/>
-              </label>
-
-          </form>
-
-          <Link
-          className="btn-primary"
-          key={ this.props.appointment._id }
-          to="proposalpage"
-          params={{ appointment_id: this.props.appointment._id }}>
-            proposals
-        </Link>
-
+                  value={this.state.purpose}
+                  />
+              </div>
+              <div className="form-group">
+                <label>Location</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="location"
+                  ref="location"
+                  placeholder="Where do we meet?"
+                  onChange={this.handleChange}
+                  onBlur={this.handleBlur}
+                  value={this.state.location}
+                  />
+              </div>
+              <div className="form-group">
+                <label>Duration</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="duration"
+                  ref="duration"
+                  placeholder="Let's go all night baby."
+                  onChange={this.handleChange}
+                  onBlur={this.handleBlur}
+                  value={this.state.duration}
+                  />
+              </div>
+            </form>
+          </div>
         </div>
-
       )
 
     }

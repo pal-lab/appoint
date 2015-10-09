@@ -21,17 +21,9 @@ AppointmentMembers = React.createClass({
     });
 
     return (
-      <div className="list-items">
+      <div className="invited-friends-list">
+        <h4>Your invited friendz':</h4>
         { allMembers }
-         <Link
-          className="btn-primary"
-          key={ this.props.appointment._id }
-          to="addMemberPage"
-          params={{ appointment_id: this.props.appointment._id }}>
-            Add yo friendz'
-        </Link>
-
-
       </div>
     );
   }

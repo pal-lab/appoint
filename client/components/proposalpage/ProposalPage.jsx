@@ -1,4 +1,6 @@
 /*jshint esnext: true */
+const Link = ReactRouter.Link;
+
 const {
   Navigation,
   State
@@ -22,7 +24,8 @@ ProposalPage = React.createClass({
       <div className="page lists-show">
         <HeaderBar
           status={"ProposalPage"}
-          showLoadingIndicator={this.data.tasksLoading} />
+          showLoadingIndicator={this.data.tasksLoading}
+          />
 
         <div className="content-scrollable">
           <ProposalList

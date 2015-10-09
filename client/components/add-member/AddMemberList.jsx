@@ -20,15 +20,35 @@ AddMemberList = React.createClass({
 
     return (
       <div>
-        <div>
-          <Link
-            className="btn-primary"
-            key={ this.props.appointment._id }
-            to="appointmentpage"
-            params={{ appointment_id: this.props.appointment._id }}>
-              Zurück zu {this.props.appointment.purpose}
-          </Link>
-        </div>
+        <ul className="nav nav-pills nav-justified">
+          <li>
+            <Link
+              className="btn-primary"
+              key={ this.props.appointment._id }
+              to="appointmentpage"
+              params={{ appointment_id: this.props.appointment._id }}>
+                Overview
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="btn-primary"
+              key={ this.props.appointment._id }
+              to="proposalpage"
+              params={{ appointment_id: this.props.appointment._id }}>
+                Proposed Dates
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="btn-primary"
+              key={ this.props.appointment._id }
+              to="addMemberPage"
+              params={{ appointment_id: this.props.appointment._id }}>
+                Add yo friendz'
+            </Link>
+          </li>
+        </ul>
         <div className="list-items">
           { allMembers }
         </div>
