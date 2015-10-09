@@ -17,8 +17,8 @@ LeftPanel = React.createClass({
           </Link>
           <Link
             className="list-todo"
-            to="newAppointmentPage">
-            New Appoint
+            to="settings">
+            Settings
           </Link>
         </div>
       </section>
