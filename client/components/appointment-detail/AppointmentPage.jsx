@@ -56,12 +56,13 @@ AppointmentPage = React.createClass({
 
     console.log(proposals);
     });
+    const appointmentInitiator = Appointments.findOne({ _id: appointment_id }).initiator;
     return {
       appointment: Appointments.findOne({ _id: appointment_id }),
-      invitedMembers: Meteor.users.find({ 'profile.invitations': { $in: [ appointment_id ] } }, {
+      invitedMembers: Meteor.users.find({ '_id': { $ne: appointmentInitiator } , 'profile.invitations': { $in: [ appointment_id ] }}, {
         emails: 1,
         profile: 1
-    }).fetch(),
+        }).fetch(),
     // get the proposals and the last voting the user did for each voting
       proposals: proposals,
       appointmentLoading: ! appointmentSubHandle.ready()
