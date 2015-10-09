@@ -9,10 +9,11 @@ AddMemberPage = React.createClass({
   getMeteorData() {
     const appointment_id = this.getParams().appointment_id;
     const usersSubHandle = Meteor.subscribe("users");
+    const appointmentInitiator = Appointments.findOne({ _id: appointment_id }).initiator;
 
     return {
       appointment: Appointments.findOne({ _id: appointment_id }),
-      members: Meteor.users.find().fetch()
+      members: Meteor.users.find({ '_id': { $ne: appointmentInitiator }}).fetch()
     };
   },
 
