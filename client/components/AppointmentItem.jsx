@@ -58,7 +58,7 @@ AppointmentItem = React.createClass({
 
     let renderObject;
 
-    if (!this.checkAcknowledged()){
+    if (!this.checkAcknowledged() && !(this.state.currentUser._id === this.props.appointment.initiator)){
       renderObject = (
         <div className="row appointment-item" >
           <div className="col-md-4" onClick={ this.openAppointment }>
