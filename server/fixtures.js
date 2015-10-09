@@ -60,7 +60,7 @@ data.push({
       latest: moment('2015-10-29').toDate(),
       purpose: 'Appoint MVP bauen',
       location: 'Praha',
-      duration: moment.duration(4, 'days').asMinutes(),
+      duration: moment.duration(5, 'hours').asMinutes(),
       initiator: initiator
     };
   },
@@ -171,7 +171,7 @@ data.push({
       latest: moment('2015-10-29').toDate(),
       purpose: 'Makrelen Party',
       location: 'Darmstadt',
-      duration: moment.duration(4, 'days').asMinutes(),
+      duration: moment.duration(8, 'hours').asMinutes(),
       initiator: initiator
     };
   },
@@ -352,7 +352,7 @@ data.push({
       latest: moment('2015-10-29').toDate(),
       purpose: 'Appoint Party Planen',
       location: 'Praha',
-      duration: moment.duration(4, 'days').asMinutes(),
+      duration: moment.duration(4, 'hours').asMinutes(),
       initiator: initiator
     };
   },
