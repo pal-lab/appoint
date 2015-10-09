@@ -9,10 +9,12 @@ ProposalItem = React.createClass({
 
   render() {
     let className = "list-item";
-    let proposalDate = moment(this.props.proposal.date);
+    let proposalDate = moment(this.props.proposal.date).format('DD/MM/YYYY - hh:mm');
     return (
       <div className={ className }>
-          { proposalDate.toString() }
+      
+
+          <li>{ proposalDate }</li>
       </div>
     );
   }
