@@ -1,3 +1,4 @@
+const Link = ReactRouter.Link;
 AppointmentSettings = React.createClass({
   propTypes: {
     appointment: React.PropTypes.object.isRequired,
@@ -94,8 +95,15 @@ AppointmentSettings = React.createClass({
               </label>
               
           </form>
-          <p className="date">Earliest: {earliest} | Latest: {latest} </p>
-          {{> quickForm id="types1" schema=typesSchema1}}
+
+          <Link
+          className={ className }
+          key={ this.props.appointment._id }
+          to="proposalpage"
+          params={{ appointment_id: this.props.appointment._id }}>
+            proposals
+        </Link>
+
         </div>
 
       )
