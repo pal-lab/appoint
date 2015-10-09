@@ -1,53 +1,77 @@
 /*jshint esnext: true */
 const Link = ReactRouter.Link;
 
+const {
+  Navigation,
+  State
+} = ReactRouter;
+
 AppointmentDetails = React.createClass({
+  mixins: [Navigation, State],
+
   propTypes: {
     appointment: React.PropTypes.object.isRequired,
     invitedMembers: React.PropTypes.array.isRequired
   },
+
+  sendInvitations() {
+    console.log('yeahhh');
+    Meteor.call('appointment/invite', this.props.appointment._id);
+  },
+
+  openAddMemberPage() {
+    this.transitionTo('proposalpage', {appointment_id: this.props.appointment._id});
+  },
+
+  openProposalsPage() {
+   this.transitionTo('proposalpage', {appointment_id: this.props.appointment._id});
+  },
+
+  openInboxPage() {
+   this.transitionTo('inboxPage');
+  },
+
   render() {
+
+      let invitationButton;
+      let addMemberButton;
+
+      if (this.props.appointment.initiator === Meteor.user()._id && this.props.appointment.status === "draft") {
+        invitationButton = (
+          <li>
+              <a onClick={ this.sendInvitations }>Send Invitations</a>
+          </li>
+          );
+      }
+
+      if (this.props.appointment.initiator === Meteor.user()._id && this.props.appointment.status === "draft") {
+        addMemberButton = (
+          <li>
+              <a onClick={ this.openAddMemberPage }>Add Friendz</a>
+          </li>
+          );
+      }
+
 
       return (
         <div className="page appointment-details">
           <ul className="nav nav-pills nav-justified">
             <li>
-              <Link
-                className="btn-primary"
-                key={ this.props.appointment._id }
-                to="appointmentpage"
-                params={{ appointment_id: this.props.appointment._id }}>
-                  Overview
-              </Link>
+              <a onClick={ this.openInboxPage }>Home</a>
             </li>
             <li>
-              <Link
-                className="btn-primary"
-                key={ this.props.appointment._id }
-                to="proposalpage"
-                params={{ appointment_id: this.props.appointment._id }}>
-                  Proposed Dates
-              </Link>
+              <a onClick={ this.openProposalsPage }>Proposals</a>
             </li>
-            <li>
-              <Link
-                className="btn-primary"
-                key={ this.props.appointment._id }
-                to="addMemberPage"
-                params={{ appointment_id: this.props.appointment._id }}>
-                  Add yo friendz'
-              </Link>
-            </li>
+            { addMemberButton }
+            { invitationButton }
           </ul>
 
           <AppointmentSettings
-            appointment={this.props.appointment}
-            />
+            appointment={this.props.appointment}/>
 
           <AppointmentMembers
             invitedMembers={this.props.invitedMembers}
-            appointment={this.props.appointment}
-            />
+            appointment={this.props.appointment}/>
 
         </div>
       );

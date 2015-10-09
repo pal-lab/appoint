@@ -10,7 +10,7 @@ InboxPage = React.createClass({
   getMeteorData() {
     // Get list ID from ReactRouter
     //const listId = this.getParams().listId;
-
+    console.log(this.data);
     return {
       appointments: Appointments.find().fetch()
       //list: Lists.findOne({ _id: listId }),
