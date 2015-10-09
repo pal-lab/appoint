@@ -4,14 +4,15 @@ const Link = ReactRouter.Link;
 ProposalItem = React.createClass({
   propTypes: {
     proposal: React.PropTypes.object.isRequired,
+    appointment: React.PropTypes.object.isRequired
   },
 
   acceptProposal() {
-    Meteor.call("proposal/accept", this.props.proposal._id);
+    Meteor.call('appointment/accept', this.props.appointment._id, this.props.proposal.date);
   },
 
   deleteProposal() {
-    Meteor.call("proposal/denied", this.props.proposal._id);
+    Meteor.call('appointment/reject', this.props.appointment._id, this.props.proposal.date);
   },
 
   render() {

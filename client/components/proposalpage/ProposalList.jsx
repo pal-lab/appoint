@@ -12,7 +12,9 @@ ProposalList = React.createClass({
       return (
         <ProposalItem
           key={ proposal._id }
-          proposal={ proposal } />
+          proposal={ proposal }
+          appointment= { this.props.appointment }
+          />
       );
     });
 

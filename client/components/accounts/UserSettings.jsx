@@ -1,8 +1,4 @@
 UserSettings = React.createClass({
-  propTypes: {
-    proposal: React.PropTypes.object.isRequired,
-  },
-
 onSubmitChangeNames(event) {
     event.preventDefault();
     const firstnameinput = React.findDOMNode(this.refs.firstname);
@@ -13,7 +9,6 @@ onSubmitChangeNames(event) {
       Meteor.call('user/changenames', firstnameinput.value, lastnameinput.value);
     }
 },
-
   render() {
     let className = "user-settings";
     const changeFirstNameForm = (
@@ -33,7 +28,6 @@ onSubmitChangeNames(event) {
       {changeFirstNameForm}
       {changeLastNameForm}
         <Profile />
-        <SettingsList />
       </div>
     )
   }
@@ -105,26 +99,4 @@ Profile = React.createClass({
       </div>
     )
   }
-})
-
-SettingsList = React.createClass({
-  getDefaultProps() {
-    return {
-      settings: ["Setting 1", "Setting 2", "Setting 3"]
-    }
-  },
-  render() {
-  let list = this.props.settings.map((setting) => {
-    return (
-      <div className="item" key={setting}>
-        <a>{setting}</a>
-      </div>
-    )
-  })
-  return (
-    <div className="list-items">
-      {list}
-    </div>
-  )
-}
 })
