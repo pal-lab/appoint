@@ -15,12 +15,55 @@ AppointmentPage = React.createClass({
     // Subscribe to the appointment we need to render this component
     const appointmentSubHandle = Meteor.subscribe("appointment");
     const membersSubHandle = Meteor.subscribe("users");
+    const proposalSubHandle = Meteor.subscribe('appointmentevents', appointment_id);
+    var proposals = [];
+    AppointmentEvents.find({
+      type: 'proposed'
+    }).forEach(function(prop) {
+      var vote = AppointmentEvents.find({
+        $and: [
+          {
+            date: prop.date,
+            account: Meteor.userId()
+          }, {
+            $or: [
+              {
+                type: 'accepted'
+              }, {
+                type: 'rejected'
+              }
+            ]
+          }
+        ]
+      }, {
+        sort: {
+          createdAt: -1
+        },
+        limit: 1
+      }).fetch();
+    //console.log(prop, vote);
+      if (vote.length > 0) {
+        proposals.push({
+          date: prop.date,
+          vote: vote[0]
+        });
+      } else {
+        proposals.push({
+          date: prop.date,
+          vote: 'notVoted'
+        });
+      }
+
+    console.log(proposals);
+    });
     return {
       appointment: Appointments.findOne({ _id: appointment_id }),
       invitedMembers: Meteor.users.find({ 'profile.invitations': { $in: [ appointment_id ] } }, {
         emails: 1,
         profile: 1
     }).fetch(),
+    // get the proposals and the last voting the user did for each voting
+      proposals: proposals,
       appointmentLoading: ! appointmentSubHandle.ready()
     };
   },
