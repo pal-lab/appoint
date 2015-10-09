@@ -18,9 +18,9 @@ AppointmentMembers = React.createClass({
       return (
         <MemberItem
           key = { member._id}
-          firstname = {member.users.profile.firstname}
-          lastname = {member.users.profile.lastname}
-          initials = {member.users.profile.firstname.charAt(0).concat(member.users.profile.lastname.charAt(0))}/>
+          firstname = {member.profile.firstname}
+          lastname = {member.profile.lastname}
+          initials = {member.profile.firstname.charAt(0).concat(member.profile.lastname.charAt(0))}/>
       );
     });
 
@@ -30,7 +30,7 @@ AppointmentMembers = React.createClass({
         <button type="submit" className="btn-primary" onClick= {this.handleClick}>
                 Add Members
         </button>
-        
+
 
       </div>
     );

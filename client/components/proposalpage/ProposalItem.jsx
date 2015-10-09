@@ -6,16 +6,35 @@ ProposalItem = React.createClass({
     proposal: React.PropTypes.object.isRequired,
   },
 
+  acceptProposal() {
+    Meteor.call("proposal/accept", this.props.proposal._id);
+  },
+
+  deleteProposal() {
+    Meteor.call("proposal/denied", this.props.proposal._id);
+  },
 
   render() {
     let className = "list-item";
-    let proposalDate = moment(this.props.proposal.date).format('DD/MM/YYYY - hh:mm');
+    let date = moment(this.props.proposal.date).format('DD/MM/YYYY');
+    let time = moment(this.props.proposal.date).format('hh:mm');
     return (
-      <div className={ className }>
-      
+      <li className={ className }>
+       
+        <span className="text">
+          Uhrzeit: {date} --> Zeit: {time}
+        </span>
 
-          <li>{ proposalDate }</li>
-      </div>
+        <div className="delete" onClick={this.deleteProposal}>
+          <span className="icon-cross"></span>
+        </div>
+
+        <div className="accept" onClick={this.acceptProposal}>
+          <span className="icon-check"></span>
+        </div>
+        
+
+      </li>
     );
   }
 });
