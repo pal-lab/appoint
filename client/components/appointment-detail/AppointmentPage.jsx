@@ -17,12 +17,16 @@ AppointmentPage = React.createClass({
 
     return {
       appointment: Appointments.findOne({ _id: appointment_id }),
-      invitedMembers: AppointmentInvitees.find().fetch(),
+      invitedMembers: Meteor.users.find({ 'profile.invitations': { $in: [ appointment_id ] } }, {
+        emails: 1,
+        profile: 1
+    }).fetch(),
       appointmentLoading: ! appointmentSubHandle.ready()
     };
   },
 
   render() {
+      console.log(this.data.invitedMembers);
     const appointment = this.data.appointment;
 
     if (! appointment) {
