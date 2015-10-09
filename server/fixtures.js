@@ -157,42 +157,48 @@ data.accounts = [{
   password: 'asdasd',
   profile: {
     firstname: 'Admin',
-    lastname: 'Istrator'
+    lastname: 'Istrator',
+    invitations: []
   }
 }, {
   email: 'jk@appoint.de',
   password: 'asdasd',
   profile: {
     firstname: 'Johannes',
-    lastname: 'Klumpe'
+    lastname: 'Klumpe',
+    invitations: []
   }
 }, {
   email: 'pt@appoint.de',
   password: 'asdasd',
   profile: {
     firstname: 'Philipp',
-    lastname: 'Terres'
+    lastname: 'Terres',
+    invitations: []
   }
 }, {
   email: 'jp@appoint.de',
   password: 'asdasd',
   profile: {
     firstname: 'Jorrit',
-    lastname: 'Posor'
+    lastname: 'Posor',
+    invitations: []
   }
 }, {
   email: 'sr@appoint.de',
   password: 'asdasd',
   profile: {
     firstname: 'Sven',
-    lastname: 'Rossmann'
+    lastname: 'Rossmann',
+    invitations: []
   }
 }, {
   email: 'ga@appoint.de',
   password: 'asdasd',
   profile: {
     firstname: 'Gregor',
-    lastname: 'Albrecht'
+    lastname: 'Albrecht',
+    invitations: []
   }
 }];
 
