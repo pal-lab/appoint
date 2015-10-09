@@ -19,22 +19,21 @@ ProposalItem = React.createClass({
     let date = moment(this.props.proposal.date).format('DD/MM/YYYY');
     let time = moment(this.props.proposal.date).format('hh:mm');
     return (
-      <li className={ className }>
-       
-        <span className="text">
+      <div className="wrapper">
+        <div className="appnt-list-item list-item member" onClick={ this.deleteProposal }>
+          <span className="appnt-icon icon-cross"></span>
+        </div>
+
+        
           Uhrzeit: {date} --> Zeit: {time}
-        </span>
-
-        <div className="delete" onClick={this.deleteProposal}>
-          <span className="icon-cross"></span>
-        </div>
-
-        <div className="accept" onClick={this.acceptProposal}>
-          <span className="icon-check"></span>
-        </div>
         
 
-      </li>
+        <div className="appnt-list-item list-item member" onClick={ this.acceptProposal }>
+          <span className="appnt-icon icon-plus"></span>
+          
+        </div>        
+
+      </div>
     );
   }
 });
