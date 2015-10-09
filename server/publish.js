@@ -11,8 +11,8 @@ Meteor.publish('users', function() {
 });
 
 
-Meteor.publish('appointment', function() {
-  if (this.userId) {
+Meteor.publish('appointment', function(user) {
+  if (this.userId && user && this.userId === user._id) {
     var user = Meteor.users.findOne(this.userId);
     return Appointments.find( {$or : [{
       initiator: this.userId
