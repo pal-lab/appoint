@@ -66,7 +66,7 @@ AppBody = React.createClass({
 
     return {
       subsReady: subsReady,
-      currentUser: this.state.currentUser,
+      currentUser: Meteor.user(),
       disconnected: ShowConnectionIssues.get() && (! Meteor.status().connected)
     };
   },
