@@ -1,10 +1,22 @@
 /*jshint esnext: true */
 const Link = ReactRouter.Link;
 
+const {
+  Navigation,
+  State
+} = ReactRouter;
+
 AddMemberList = React.createClass({
+
+  mixins: [Navigation, State],
+  
   propTypes: {
     members: React.PropTypes.array.isRequired,
     appointment: React.PropTypes.object.isRequired
+  },
+
+  backToAppointmentDetails() {
+   this.transitionTo('appointmentpage', {appointment_id: this.props.appointment._id});
   },
 
   render() {
@@ -13,42 +25,17 @@ AddMemberList = React.createClass({
         <AddMemberItem
           key = { member._id}
           member = { member }
-          appointment = { this.props.appointment }
-          />
+          appointment = { this.props.appointment }/>
       );
     });
 
     return (
-      <div>
+      <div >
         <ul className="nav nav-pills nav-justified">
-          <li>
-            <Link
-              className="btn-primary"
-              key={ this.props.appointment._id }
-              to="appointmentpage"
-              params={{ appointment_id: this.props.appointment._id }}>
-                Overview
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="btn-primary"
-              key={ this.props.appointment._id }
-              to="proposalpage"
-              params={{ appointment_id: this.props.appointment._id }}>
-                Proposed Dates
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="btn-primary"
-              key={ this.props.appointment._id }
-              to="addMemberPage"
-              params={{ appointment_id: this.props.appointment._id }}>
-                Add yo friendz'
-            </Link>
-          </li>
-        </ul>
+            <li>
+              <a onClick={ this.backToAppointmentDetails }>Back to Appointment</a>
+            </li>
+          </ul>
         <div className="list-items">
           { allMembers }
         </div>

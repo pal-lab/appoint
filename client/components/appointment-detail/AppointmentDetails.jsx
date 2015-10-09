@@ -20,7 +20,7 @@ AppointmentDetails = React.createClass({
   },
 
   openAddMemberPage() {
-    this.transitionTo('proposalpage', {appointment_id: this.props.appointment._id});
+    this.transitionTo('addMemberPage', {appointment_id: this.props.appointment._id});
   },
 
   openProposalsPage() {
