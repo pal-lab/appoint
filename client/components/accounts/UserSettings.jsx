@@ -13,7 +13,6 @@ onSubmitChangeNames(event) {
       Meteor.call('user/changenames', firstnameinput.value, lastnameinput.value);
     }
 },
-
   render() {
     let className = "user-settings";
     const changeFirstNameForm = (
