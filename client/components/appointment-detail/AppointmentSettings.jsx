@@ -7,7 +7,7 @@ AppointmentSettings = React.createClass({
   getInitialState() {
     return {
       // TODO: Abruf des wirklichen Status
-      editableAppointment: true,
+      editableAppointment: this.props.appointment.status,
       appointment_id: this.props.appointment._id,
       purpose: this.props.appointment.purpose,
       location: this.props.appointment.location,
@@ -47,7 +47,7 @@ AppointmentSettings = React.createClass({
     let appointmentSettings;
 
 
-    if(!this.state.editableAppointment) {
+    if(!this.state.editableAppointment === "draft") {
       const earliest= moment(this.props.appointment.earliest).format('L');
       const latest= moment(this.props.appointment.latest).format('L');
       appointmentSettings = (
