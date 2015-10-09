@@ -31,7 +31,7 @@ AppointmentItem = React.createClass({
   },
 
   checkAcknowledged() {
-    if (this.props.appointment.status === "invited"){
+    if (this.state.currentUser._id !== this.props.appointment.initiator && this.props.appointment.status === "invited"){
       let count = AppointmentEvents.find({$and: [{
         account: Meteor.userId()
       }, {
