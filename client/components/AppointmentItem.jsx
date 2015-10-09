@@ -12,15 +12,21 @@ AppointmentItem = React.createClass({
     appointment: React.PropTypes.object.isRequired,
   },
 
+  getInitialState() {
+    return {
+      currentUser: Meteor.user()
+    };
+  },
+
   openAppointment() {
     this.transitionTo('appointmentpage', {appointment_id: this.props.appointment._id});
   },
 
-  acceptAppointment(){ 
+  acceptAppointment(){
     Meteor.call('appointment/accept', this.props.appointment._id);
   },
 
-  declineAppointment(){ 
+  declineAppointment(){
     Meteor.call('appointment/decline', this.props.appointment._id);
   },
 
@@ -52,13 +58,11 @@ AppointmentItem = React.createClass({
 
     let renderObject;
 
-    console.log(this.checkAcknowledged());
-
     if (!this.checkAcknowledged()){
       renderObject = (
         <div className="row appointment-item" >
           <div className="col-md-4" onClick={ this.openAppointment }>
-            <h4>{ this.props.appointment.purpose }</h4>
+            <h4>{ this.props.appointment.purpose }</h4><br/>
           </div>
           <div className="col-md-6 col-full-height" onClick={ this.openAppointment }>
             <p><span className="appointment-label">Location:</span> { this.props.appointment.location } </p>
@@ -76,6 +80,8 @@ AppointmentItem = React.createClass({
         <div className="row appointment-item" onClick={ this.openAppointment }>
           <div className="col-md-4">
             <h4>{ this.props.appointment.purpose }</h4>
+            <p>{ (this.state.currentUser._id === this.props.appointment.initiator) ? 'Digga, das ist mein Appointment' : null}
+            </p>
           </div>
           <div className="col-md-6 col-full-height">
             <p><span className="appointment-label">Location:</span> { this.props.appointment.location } </p>
