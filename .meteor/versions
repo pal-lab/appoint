@@ -55,8 +55,6 @@ momentjs:moment@2.10.6
 mongo@1.1.2
 mongo-id@1.0.1
 msavin:mongol@1.4.0
-nemo64:bootstrap@3.3.5_2
-nemo64:bootstrap-data@3.3.5
 npm-bcrypt@0.7.8_2
 npm-container@1.1.0
 npm-mongo@1.4.39_1
@@ -86,6 +84,7 @@ static-html@1.0.2
 templating@1.1.4
 templating-tools@1.0.0
 tracker@1.0.9
+twbs:bootstrap@3.3.5
 ui@1.0.8
 underscore@1.0.4
 url@1.0.5
