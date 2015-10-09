@@ -1,13 +1,3 @@
-Meteor.publish('appointment', function() {
-  if (this.userId) {
-    return Appointments.find({
-      initiator: this.userId
-    });
-  } else {
-    this.ready();
-  }
-});
-
 Meteor.publish('users', function() {
   if (this.userId) {
 
@@ -19,6 +9,18 @@ Meteor.publish('users', function() {
     this.ready();
   }
 });
+
+
+Meteor.publish('appointment', function() {
+  if (this.userId) {
+    return Appointments.find({
+      initiator: this.userId
+    });
+  } else {
+    this.ready();
+  }
+});
+
 
 Meteor.publish('appointmentinvitees', function(apId) {
   check(apId, String);
@@ -33,14 +35,15 @@ Meteor.publish('appointmentinvitees', function(apId) {
   }
 });
 
+
 Meteor.publish('appointmentproposal', function(apId) {
   check(apId, String);
   if (this.userId) {
     var cursor = AppointmentProposals.find({
       appointment: apId
     });
-
-    return AppointmentProposals.publishJoinedCursors(cursor);
+    return cursor;
+    // return AppointmentProposals.publishJoinedCursors(cursor);
   } else {
     this.ready();
   }

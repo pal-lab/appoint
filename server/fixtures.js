@@ -2,6 +2,88 @@
 
 var data = {};
 
+data.events = function(ap, u1, u2, u3) {
+  return [{
+    type: 'invited',
+    appointment: ap,
+    account: u1
+  },{
+    date: moment('2015-10-20 10:00').toDate(),
+    appointment: ap,
+    type: 'proposed'
+  }, {
+    date: moment('2015-10-21 10:00').toDate(),
+    appointment: ap,
+    type: 'proposed'
+  }, {
+    date: moment('2015-10-19 12:00').toDate(),
+    appointment: ap,
+    type: 'proposed'
+  }, {
+    date: moment('2015-10-19 14:00').toDate(),
+    appointment: ap,
+    type: 'proposed'
+  }, {
+    date: moment('2015-10-19 10:00').toDate(),
+    appointment: ap,
+    type: 'proposed'
+  },
+  // u2
+  {
+    date: moment('2015-10-20 10:00').toDate(),
+    appointment: ap,
+    account: u2,
+    type: 'accepted'
+  }, {
+    date: moment('2015-10-21 10:00').toDate(),
+    appointment: ap,
+    account: u2,
+    type: 'accepted'
+  }, {
+    date: moment('2015-10-19 12:00').toDate(),
+    appointment: ap,
+    account: u2,
+    type: 'declined'
+  }, {
+    date: moment('2015-10-19 14:00').toDate(),
+    appointment: ap,
+    account: u2,
+    type: 'declined'
+  }, {
+    date: moment('2015-10-19 10:00').toDate(),
+    appointment: ap,
+    account: u2,
+    type: 'declined'
+  },
+  // u3
+  {
+    date: moment('2015-10-20 10:00').toDate(),
+    appointment: ap,
+    account: u3,
+    type: 'accepted'
+  }, {
+    date: moment('2015-10-21 10:00').toDate(),
+    appointment: ap,
+    account: u3,
+    type: 'accepted'
+  }, {
+    date: moment('2015-10-19 12:00').toDate(),
+    appointment: ap,
+    account: u3,
+    type: 'declined'
+  }, {
+    date: moment('2015-10-19 14:00').toDate(),
+    appointment: ap,
+    account: u3,
+    type: 'accepted'
+  }, {
+    date: moment('2015-10-19 10:00').toDate(),
+    appointment: ap,
+    account: u3,
+    type: 'accepted'
+  }];
+};
+
 data.proposal = function(ap) {
   return [{
     date: moment('2015-10-20 10:00').toDate(),
@@ -107,27 +189,27 @@ data.appointments = [function(initiator) {
 var dropData = function(callback) {
   Appointments.remove({});
   AppointmentInvitees.remove({});
+  AppointmentEvents.remove({});
   Meteor.users.remove({});
   callback();
 };
 
 var loadFixtures = function(force) {
-  var adminId = null;
   if (Meteor.users.find().count() === 0 || force === true) {
-    _.each(data.accounts, function(account) {
-      var id = Accounts.createUser(account);
-      if (adminId === null) {
-        adminId = id
-      }
+    _.each(data.accounts, function(account, key) {
+      data.accounts[key].id = Accounts.createUser(account);
     });
   }
   console.log('Current Users: ' + Meteor.users.find().count());
 
   if (Appointments.find().count() === 0 || force === true) {
     _.each(data.appointments, function(ap) {
-      var apid = Appointments.insert(ap(adminId));
+      var apid = Appointments.insert(ap(data.accounts[0].id));
       _.each(data.proposal(apid), function(app) {
         AppointmentProposals.insert(app);
+      });
+      _.each(data.events(apid, data.accounts[0].id, data.accounts[1].id, data.accounts[2].id), function(evnt) {
+        AppointmentEvents.insert(evnt);
       });
     });
   }
