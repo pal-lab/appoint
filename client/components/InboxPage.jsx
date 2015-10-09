@@ -22,7 +22,8 @@ InboxPage = React.createClass({
       <div className="page lists-show">
         <HeaderBar
           status={"InboxPage"}
-          showLoadingIndicator={this.data.tasksLoading} />
+          showLoadingIndicator={this.data.tasksLoading}
+          />
 
         <div className="content-scrollable">
           <AppointmentList appointments={this.data.appointments}/>

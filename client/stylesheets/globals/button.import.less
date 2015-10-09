@@ -2,8 +2,8 @@
 [class*=" btn-"] {
   // Sizing
   .font-s2;
-  line-height: 20px !important; //override line-height always so we can use em's to size
-  padding: 1em 1.25em; // 48px tall
+  line-height: 12px !important; //override line-height always so we can use em's to size
+  padding: 1em 1.20em; // 48px tall
 
   // Style
   .title-caps;
@@ -15,9 +15,11 @@
   text-decoration: none !important; //prevents global <a> styles from applying
   vertical-align: middle;
   white-space: nowrap;
+  margin: 8px;
+
 
   &[class*="primary"] {
-    background-color: @color-primary;
+    background-color: #2199A7;
     color: @color-empty;
 
     &:hover { background-color: darken(@color-primary, 5%); }

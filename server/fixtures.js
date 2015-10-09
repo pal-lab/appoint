@@ -216,7 +216,6 @@ data.appointments = [function(initiator) {
 
 var dropData = function(callback) {
   Appointments.remove({});
-  AppointmentInvitees.remove({});
   AppointmentEvents.remove({});
   Meteor.users.remove({});
   callback();
@@ -260,7 +259,7 @@ var loadFixtures = function(force) {
 
 
 Meteor.methods({
-  dropAndLoadFixtures: function() {
+  resetall: function() {
     dropData(loadFixtures);
   },
   loadFixtures: function() {
