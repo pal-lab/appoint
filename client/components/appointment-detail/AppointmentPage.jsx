@@ -45,7 +45,7 @@ AppointmentPage = React.createClass({
       if (vote.length > 0) {
         proposals.push({
           date: prop.date,
-          vote: vote[0]
+          vote: vote[0].type
         });
       } else {
         proposals.push({
