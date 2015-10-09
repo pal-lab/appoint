@@ -16,7 +16,9 @@ AppointmentList = React.createClass({
 
     return (
       <div className="list-items">
-        { allAppointments }
+        <ul>
+          { allAppointments }
+        </ul>
       </div>
     );
   }
