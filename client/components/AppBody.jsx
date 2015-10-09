@@ -49,7 +49,7 @@ AppBody = React.createClass({
   getMeteorData() {
     const user = Meteor.user();
     const subHandles = [
-        Meteor.subscribe("appointment", this.state.currentUser),
+        Meteor.subscribe("appointment", user),
         //Meteor.subscribe("appointmentproposal")
     ];
     const subsReady = _.all(subHandles, function (handle) {
