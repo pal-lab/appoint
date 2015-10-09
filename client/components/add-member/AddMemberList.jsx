@@ -9,9 +9,7 @@ AddMemberList = React.createClass({
       return (
         <AddMemberItem
           key = { member._id}
-          userId = { member._id }
-          firstname = { member.profile.firstname }
-          lastname = { member.profile.lastname }
+          member = { member }
           appointment = { this.props.appointment }
           />
       );
