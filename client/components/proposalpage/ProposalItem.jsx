@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 const Link = ReactRouter.Link;
 
 ProposalItem = React.createClass({
@@ -8,12 +9,10 @@ ProposalItem = React.createClass({
 
   render() {
     let className = "list-item";
-console.log(this.props.proposal);
+    let proposalDate = moment(this.props.proposal.date);
     return (
       <div className={ className }>
-
-{this.props.proposal.appointment}
-
+          { proposalDate.toString() }
       </div>
     );
   }

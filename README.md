@@ -24,3 +24,7 @@ AppBody
                 AppointmentDetails (S)
                     AppointmentSettings (S)
                     AppointmentMembers (S)
+            ProposalPage
+                HeaderBar
+                ProposalList
+                ProposalItem
