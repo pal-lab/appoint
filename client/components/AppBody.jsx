@@ -31,7 +31,8 @@ AppBody = React.createClass({
 
   getInitialState() {
     return {
-      menuOpen: false
+      menuOpen: false,
+      currentUser: Meteor.user()
     };
   },
 
@@ -48,7 +49,7 @@ AppBody = React.createClass({
   getMeteorData() {
     const user = Meteor.user();
     const subHandles = [
-        Meteor.subscribe("appointment", Meteor.user()),
+        Meteor.subscribe("appointment", this.state.currentUser),
         //Meteor.subscribe("appointmentproposal")
     ];
     const subsReady = _.all(subHandles, function (handle) {
@@ -65,7 +66,7 @@ AppBody = React.createClass({
 
     return {
       subsReady: subsReady,
-      currentUser: Meteor.user(),
+      currentUser: this.state.currentUser,
       disconnected: ShowConnectionIssues.get() && (! Meteor.status().connected)
     };
   },

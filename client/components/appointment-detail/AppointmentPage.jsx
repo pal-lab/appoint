@@ -13,7 +13,7 @@ AppointmentPage = React.createClass({
 
 
     // Subscribe to the appointment we need to render this component
-    const appointmentSubHandle = Meteor.subscribe("appointment");
+    // const appointmentSubHandle = Meteor.subscribe("appointment");
     const membersSubHandle = Meteor.subscribe("users");
     const proposalSubHandle = Meteor.subscribe('appointmentevents', appointment_id);
     var proposals = [];
@@ -64,8 +64,8 @@ AppointmentPage = React.createClass({
         profile: 1
         }).fetch(),
     // get the proposals and the last voting the user did for each voting
-      proposals: proposals,
-      appointmentLoading: ! appointmentSubHandle.ready()
+      proposals: proposals
+      // appointmentLoading: ! appointmentSubHandle.ready()
     };
   },
 
