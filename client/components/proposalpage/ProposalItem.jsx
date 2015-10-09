@@ -8,11 +8,11 @@ ProposalItem = React.createClass({
 
   render() {
     let className = "list-item";
-
+console.log(this.props.proposal);
     return (
       <div className={ className }>
 
-{this.props.appointment.purpose}
+{this.props.proposal.appointment}
 
       </div>
     );

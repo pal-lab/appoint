@@ -8,7 +8,7 @@ ProposalList = React.createClass({
     render() {
     var allproposals = this.props.proposals.map((proposal) => {
       return (
-        <Proposaltem
+        <ProposalItem
           key={ proposal._id }
           proposal={ proposal } />
       );
