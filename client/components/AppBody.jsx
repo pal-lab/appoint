@@ -42,12 +42,13 @@ AppBody = React.createClass({
   getChildContext() {
     return {
       toggleMenuOpen: this.toggleMenuOpen
-    }
+  };
   },
 
   getMeteorData() {
+    const user = Meteor.user();
     const subHandles = [
-        Meteor.subscribe("appointment"),
+        Meteor.subscribe("appointment", Meteor.user()),
         //Meteor.subscribe("appointmentproposal")
     ];
     const subsReady = _.all(subHandles, function (handle) {
