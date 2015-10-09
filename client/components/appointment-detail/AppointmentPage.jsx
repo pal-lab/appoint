@@ -49,6 +49,7 @@ AppointmentPage = React.createClass({
         });
       } else {
         proposals.push({
+          _id: vote._id,
           date: prop.date,
           vote: 'notVoted'
         });
