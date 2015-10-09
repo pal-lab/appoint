@@ -68,7 +68,7 @@ AppointmentSettings = React.createClass({
           <div className="col-xs-12 col-md-8 col-md-offset-2">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <label for="purpose">Purpose</label>
+                <label>Purpose</label>
                 <input
                   type="text"
                   className="form-control"
@@ -80,7 +80,7 @@ AppointmentSettings = React.createClass({
                   />
               </div>
               <div className="form-group">
-                <label for="location">Location</label>
+                <label>Location</label>
                 <input
                   type="text"
                   className="form-control"
@@ -92,7 +92,7 @@ AppointmentSettings = React.createClass({
                   />
               </div>
               <div className="form-group">
-                <label for="duration">Duration</label>
+                <label>Duration</label>
                 <input
                   type="text"
                   className="form-control"

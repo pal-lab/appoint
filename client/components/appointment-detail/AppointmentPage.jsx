@@ -15,7 +15,6 @@ AppointmentPage = React.createClass({
     // Subscribe to the appointment we need to render this component
     const appointmentSubHandle = Meteor.subscribe("appointment");
     const membersSubHandle = Meteor.subscribe("users");
-    console.log(Meteor.userId());
     return {
       appointment: Appointments.findOne({ _id: appointment_id }),
       invitedMembers: Meteor.users.find({ 'profile.invitations': { $in: [ appointment_id ] } }, {
