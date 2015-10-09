@@ -41,7 +41,6 @@ AppointmentSettings = React.createClass({
     Meteor.call("appointment/update",this.state.appointment_id,newData);
   },
 
-
   render() {
     let className = "appointment-settings";
 
@@ -93,11 +92,11 @@ AppointmentSettings = React.createClass({
                   onBlur={this.handleBlur}
                   value={this.state.duration}/>
               </label>
-              
+
           </form>
 
           <Link
-          className={ className }
+          className="btn-primary"
           key={ this.props.appointment._id }
           to="proposalpage"
           params={{ appointment_id: this.props.appointment._id }}>

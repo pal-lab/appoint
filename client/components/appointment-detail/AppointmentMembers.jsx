@@ -7,10 +7,6 @@ AppointmentMembers = React.createClass({
     appointment: React.PropTypes.object.isRequired
   },
 
-  handleClick() {
-    this.transitionTo('addMemberPage', {appointment_id: this.props.appointment._id});
-  },
-
   render() {
     let className = "appointment-members";
 
@@ -27,9 +23,13 @@ AppointmentMembers = React.createClass({
     return (
       <div className="list-items">
         { allMembers }
-        <button type="submit" className="btn-primary" onClick= {this.handleClick}>
-                Add Members
-        </button>
+         <Link
+          className="btn-primary"
+          key={ this.props.appointment._id }
+          to="addMemberPage"
+          params={{ appointment_id: this.props.appointment._id }}>
+            Add yo friendz'
+        </Link>
 
 
       </div>
