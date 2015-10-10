@@ -53,6 +53,7 @@ var accounts = [{
 
 // Appoint MVP bauen
 // 2/3 voted users - voting
+// 0
 data.push({
   appointment: function(initiator) {
     return {
@@ -165,6 +166,7 @@ data.push({
 
 // Makrelen Party
 // supposed to be in voted
+// 1
 data.push({
   appointment: function(initiator) {
     return {
@@ -302,6 +304,7 @@ data.push({
 
 // Essen und Trinken
 // pending
+// 2
 data.push({
   appointment: function(initiator) {
     return {
@@ -346,6 +349,7 @@ data.push({
 
 // Appoint Party Planen
 // pending
+// 3
 data.push({
   appointment: function(initiator) {
     return {
@@ -379,6 +383,7 @@ data.push({
 
 // Ich lade euch ein Freunde
 // invited
+// 4
 data.push({
   appointment: function(initiator) {
     return {
@@ -403,10 +408,25 @@ data.push({
 
 
 var dropData = function(callback) {
-  Appointments.remove({});
-  AppointmentEvents.remove({});
-  Meteor.users.remove({});
-  callback();
+  var cbi = new Meteor.callbackIterator();
+  cbi.add(function(cb) {
+    Appointments.remove({}, function() {
+      cb();
+    });
+  });
+  cbi.add(function(cb) {
+    AppointmentEvents.remove({}, function() {
+      cb();
+    });
+  });
+  cbi.add(function(cb) {
+    Meteor.users.remove({}, function() {
+      cb();
+    });
+  });
+
+  cbi.add(callback);
+  cbi.execute();
 };
 
 var loadFixtures = function(force) {
@@ -418,7 +438,8 @@ var loadFixtures = function(force) {
   console.log('Current Users: ' + Meteor.users.find().count());
 
   if (Appointments.find().count() === 0 || force === true) {
-    _.each(data, function(dat) {
+
+    var __iterator = function(dat) {
       var apid = Appointments.insert(dat.appointment(accounts[0].id));
 
       // add invitee
@@ -441,7 +462,9 @@ var loadFixtures = function(force) {
         AppointmentEvents.insert(evnt);
       });
 
-    });
+    };
+    // __iterator(data[2]);
+    _.each(data, __iterator);
   }
   console.log('Current Appointments: ' + Appointments.find().count());
 };
