@@ -41,7 +41,7 @@ AppointmentPage = React.createClass({
         },
         limit: 1
       }).fetch();
-    //console.log(prop, vote);
+    console.log(prop, vote);
       if (vote.length > 0) {
         proposals.push({
           date: prop.date,

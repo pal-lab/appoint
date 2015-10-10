@@ -57,7 +57,9 @@ AppointmentDetails = React.createClass({
         <div className="page appointment-details">
           <ul className="nav nav-pills nav-justified">
             <li>
-              <a onClick={ this.navigateToInboxPage }>Inbox</a>
+              <a onClick = { this.navigateToInboxPage }>
+                Inbox
+              </a>
             </li>
             <li>
               <a onClick={ this.navigateToProposalPage }>Proposals</a>

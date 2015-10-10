@@ -46,30 +46,15 @@ AppointmentSettings = React.createClass({
   render() {
     let className = "appointment-settings";
 
-    let appointmentSettings;
+    let renderObject;
 
+    let earliest= moment(this.props.appointment.earliest).format('L');
+    let latest= moment(this.props.appointment.latest).format('L');
     
 
-
-    if(!this.state.editableAppointment === "draft") {
-      const earliest= moment(this.props.appointment.earliest).format('L');
-      const latest= moment(this.props.appointment.latest).format('L');
-      appointmentSettings = (
-        <div className={ className }>
-          <p className="purpose">Purpose: {this.props.appointment.purpose}</p>
-          <p className="location">Location: {this.props.appointment.location}</p>
-          <p className="duration">Duration: {this.props.appointment.duration}</p>
-          <p className="date">Earliest: {earliest} | Latest: {latest} </p>
-        </div>
-      )
-
-    } else {
-      const earliest= moment(this.props.appointment.earliest).format('L');
-      const latest= moment(this.props.appointment.latest).format('L');
-
-
-
-      appointmentSettings = (
+    if(this.props.appointment.initiator === Meteor.user()._id && this.props.appointment.status === "draft") {
+      
+      renderObject = (
         <div className="row" style={{paddingTop: '50px'}}>
           <div className="col-xs-12 col-md-8 col-md-offset-2">
             <form onSubmit={this.handleSubmit}>
@@ -82,7 +67,7 @@ AppointmentSettings = React.createClass({
                   placeholder="Give me a purpose"
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
-                  value={this.state.purpose} />
+                  value={this.state.purpose}/>
               </div>
               <div className="form-group">
                 <label>Location</label>
@@ -113,10 +98,40 @@ AppointmentSettings = React.createClass({
             </form>
           </div>
         </div>
-      )
+      );
+
+    } else {
+        renderObject = (
+          <div className="row" style={{paddingTop: '50px', paddingBottom: '50px'}}>
+            <div className="col-xs-12 col-md-8 col-md-offset-2">
+            <div className="col-xs-12 col-md-12" style={{textAlign: 'center', paddingBottom: '25px'}}>
+              <h2 >{ this.props.appointment.purpose }</h2>
+              <p>
+                <span className="status">Status:&nbsp;</span> { this.props.appointment.status}
+              </p>
+            </div>
+            <div className="row col-md-12">
+              <div className="col-md-6">
+                <p><span>Location:</span> { this.props.appointment.location } </p>
+              </div>
+               <div className="col-md-6">
+                <p><span>Earliest:</span> { earliest } </p>
+              </div>
+            </div>
+            <div className="row col-md-12">
+              <div className="col-md-6">
+                <p><span>Duration:</span> { this.props.appointment.duration }min </p>
+              </div>
+              <div className="col-md-6">
+                <p><span>Latest:</span> { latest } </p>
+              </div>
+            </div>
+          </div>
+          </div>
+        );
 
     }
 
-    return appointmentSettings;
+    return renderObject;
   }
 });
