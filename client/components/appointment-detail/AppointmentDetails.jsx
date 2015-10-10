@@ -19,15 +19,15 @@ AppointmentDetails = React.createClass({
     Meteor.call('appointment/invite', this.props.appointment._id);
   },
 
-  openAddMemberPage() {
+  navigateToAddMemberPage() {
     this.transitionTo('addMemberPage', {appointment_id: this.props.appointment._id});
   },
 
-  openProposalsPage() {
+  navigateToProposalPage() {
    this.transitionTo('proposalpage', {appointment_id: this.props.appointment._id});
   },
 
-  openInboxPage() {
+  navigateToInboxPage() {
    this.transitionTo('inboxPage');
   },
 
@@ -47,7 +47,7 @@ AppointmentDetails = React.createClass({
       if (this.props.appointment.initiator === Meteor.user()._id && this.props.appointment.status === "draft") {
         addMemberButton = (
           <li>
-              <a onClick={ this.openAddMemberPage }>Add Friendz</a>
+              <a onClick={ this.navigateToAddMemberPage }>Add Friendz</a>
           </li>
           );
       }
@@ -57,10 +57,10 @@ AppointmentDetails = React.createClass({
         <div className="page appointment-details">
           <ul className="nav nav-pills nav-justified">
             <li>
-              <a onClick={ this.openInboxPage }>Home</a>
+              <a onClick={ this.navigateToInboxPage }>Home</a>
             </li>
             <li>
-              <a onClick={ this.openProposalsPage }>Proposals</a>
+              <a onClick={ this.navigateToProposalPage }>Proposals</a>
             </li>
             { addMemberButton }
             { invitationButton }

@@ -9,13 +9,13 @@ const {
 AddMemberList = React.createClass({
 
   mixins: [Navigation, State],
-  
+
   propTypes: {
     members: React.PropTypes.array.isRequired,
     appointment: React.PropTypes.object.isRequired
   },
 
-  backToAppointmentDetails() {
+  navigateToAppointmentPage() {
    this.transitionTo('appointmentpage', {appointment_id: this.props.appointment._id});
   },
 
@@ -30,10 +30,10 @@ AddMemberList = React.createClass({
     });
 
     return (
-      <div >
+      <div className="page member-list">
         <ul className="nav nav-pills nav-justified">
             <li>
-              <a onClick={ this.backToAppointmentDetails }>Back to Appointment</a>
+              <a onClick={ this.navigateToAppointmentPage }>Back to Appointment</a>
             </li>
           </ul>
         <div className="list-items">

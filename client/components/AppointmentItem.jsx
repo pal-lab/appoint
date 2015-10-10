@@ -18,7 +18,7 @@ AppointmentItem = React.createClass({
     };
   },
 
-  openAppointment() {
+  nagvigateToAppointmentPage() {
     this.transitionTo('appointmentpage', {appointment_id: this.props.appointment._id});
   },
 
@@ -61,10 +61,10 @@ AppointmentItem = React.createClass({
     if (!this.checkAcknowledged() && !(this.state.currentUser._id === this.props.appointment.initiator)){
       renderObject = (
         <div className="row appointment-item" >
-          <div className="col-md-4" onClick={ this.openAppointment }>
+          <div className="col-md-4" onClick={ this.nagvigateToAppointmentPage }>
             <h4>{ this.props.appointment.purpose }</h4><br/>
           </div>
-          <div className="col-md-6 col-full-height" onClick={ this.openAppointment }>
+          <div className="col-md-6 col-full-height" onClick={ this.nagvigateToAppointmentPage }>
             <p><span className="appointment-label">Location:</span> { this.props.appointment.location } </p>
             <p><span className="appointment-label">Duration:</span> { this.props.appointment.duration } minutes </p>
             <p><span className="appointment-label">Status:</span> { this.props.appointment.status } </p>
@@ -77,7 +77,7 @@ AppointmentItem = React.createClass({
       );
     } else {
       renderObject = (
-        <div className="row appointment-item" onClick={ this.openAppointment }>
+        <div className="row appointment-item" onClick={ this.nagvigateToAppointmentPage }>
           <div className="col-md-4">
             <h4>{ this.props.appointment.purpose }</h4>
             <p>{ (this.state.currentUser._id === this.props.appointment.initiator) ? 'Digga, das ist mein Appointment' : null}
