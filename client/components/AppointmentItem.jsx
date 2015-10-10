@@ -100,30 +100,5 @@ AppointmentItem = React.createClass({
     );
 
     return renderObject;
-
-
-
-
-
-
-    // if (!this.checkAcknowledged() && !isOwnAppointment){
-    //   renderObject = (
-    //   );
-    // } else {
-    //   renderObject = (
-    //     <div className="row appointment-item" onClick={ this.navigateToAppointmentPage }>
-    //       <div className="col-md-4">
-    //         <h4>{ this.props.appointment.purpose }</h4>
-    //           <p>
-    //           </p>
-    //       </div>
-    //       <div className="col-md-6 col-full-height">
-    //         <p><span className="appointment-label">Location:</span> { this.props.appointment.location } </p>
-    //         <p><span className="appointment-label">Duration:</span> { this.props.appointment.duration } minutes </p>
-    //         <p><span className="appointment-label">Status:</span> { this.props.appointment.status } </p>
-    //       </div>
-    //     </div>
-    //   );
-    // }
   }
 });
