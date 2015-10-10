@@ -87,13 +87,13 @@ AuthJoinPage = React.createClass({
                 type="text"
                 name="firstname"
                 label="Firstname"
-                iconClass="icon-check" />
+                iconClass="icon-user-add" />
 
               <AuthFormInput hasError={!! this.state.errors.lastname}
                 type="text"
                 name="lastname"
                 label="Lastname"
-                iconClass="icon-check" />
+                iconClass="icon-user-add" />
 
               <AuthFormInput
                 hasError={!!this.state.errors.email}
