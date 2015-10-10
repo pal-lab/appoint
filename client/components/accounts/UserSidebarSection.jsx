@@ -46,7 +46,7 @@ UserSidebarSection = React.createClass({
     } else {
       contents = (
         <div className="btns-group">
-          <Link to="signin" className="btn-secondary">Sign in</Link>
+          <Link to="signin" className="btn-secondary">Login</Link>
           <Link to="join" className="btn-secondary">Join</Link>
         </div>
       );
