@@ -8,21 +8,27 @@ AuthFormInput = React.createClass({
     name: React.PropTypes.string
   },
   render() {
-    let className = "input-symbol";
+    let className = "input-symbol form-group";
     if (this.props.hasError) {
       className += " error";
     }
 
     return (
-      <div className={ className } >
+      <div className={ className } style={{ position: 'relative' }} >
+        <span
+          className={ this.props.iconClass }
+          title={ this.props.label }
+          style={{ position: 'absolute', left: '10px', lineHeight: '34px' }}
+          />
+
         <input
           type={ this.props.type }
           name={ this.props.name }
-          placeholder={ this.props.label } />
+          placeholder={ this.props.label }
+          className="form-control"
+          style={{ paddingLeft: '40px' }}
+          />
 
-        <span
-          className={ this.props.iconClass }
-          title={ this.props.label } />
       </div>
     );
   }
