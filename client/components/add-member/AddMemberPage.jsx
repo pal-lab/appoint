@@ -28,14 +28,12 @@ AddMemberPage = React.createClass({
       <div className="page lists-show">
         <HeaderBar
           status={"AddMemberPage"}
-          showLoadingIndicator = { this.data.appointmentLoading }
-          />
+          showLoadingIndicator = { this.data.appointmentLoading }  />
 
         <div className="content-scrollable list items addusers">
           <AddMemberList
             members = { this.data.members }
-            appointment = { this.data.appointment }
-            />
+            appointment = { this.data.appointment }/>
         </div>
       </div>
     );

@@ -6,6 +6,7 @@ AppointmentSettings = React.createClass({
   },
 
   getInitialState() {
+
     return {
       // TODO: Abruf des wirklichen Status
       editableAppointment: this.props.appointment.status,
@@ -47,6 +48,8 @@ AppointmentSettings = React.createClass({
 
     let appointmentSettings;
 
+    
+
 
     if(!this.state.editableAppointment === "draft") {
       const earliest= moment(this.props.appointment.earliest).format('L');
@@ -63,22 +66,23 @@ AppointmentSettings = React.createClass({
     } else {
       const earliest= moment(this.props.appointment.earliest).format('L');
       const latest= moment(this.props.appointment.latest).format('L');
+
+
+
       appointmentSettings = (
         <div className="row" style={{paddingTop: '50px'}}>
           <div className="col-xs-12 col-md-8 col-md-offset-2">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label>Purpose</label>
-                <input
-                  type="text"
+                <input type="text"
                   className="form-control"
                   id="purpose"
                   ref="purpose"
                   placeholder="Give me a purpose"
                   onChange={this.handleChange}
                   onBlur={this.handleBlur}
-                  value={this.state.purpose}
-                  />
+                  value={this.state.purpose} />
               </div>
               <div className="form-group">
                 <label>Location</label>

@@ -24,14 +24,12 @@ ProposalPage = React.createClass({
       <div className="page lists-show">
         <HeaderBar
           status={"ProposalPage"}
-          showLoadingIndicator={this.data.tasksLoading}
-          />
+          showLoadingIndicator={this.data.tasksLoading}/>
 
         <div className="content-scrollable">
           <ProposalList
             proposals={this.data.proposals}
-            appointment = { this.data.appointment }
-            />
+            appointment = { this.data.appointment }/>
         </div>
       </div>
     );
