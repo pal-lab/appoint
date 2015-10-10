@@ -29,7 +29,6 @@ UserSidebarSection = React.createClass({
 
     if (this.props.user) {
       const email = this.props.user.emails[0].address;
-      const emailUsername = email.substring(0, email.indexOf('@'));
 
       const arrowDirection = this.state.menuOpen ? "up" : "down";
       const arrowIconClass = "icon-arrow-" + arrowDirection;
