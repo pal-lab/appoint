@@ -23,7 +23,7 @@ AppointmentMembers = React.createClass({
     return (
       <div className="invited-friends-list">
         <h4>Your invited friendz':</h4>
-        { allMembers }
+        { this.props.invitedMembers.length ? allMembers : 'Noone invited yet.' }
       </div>
     );
   }
