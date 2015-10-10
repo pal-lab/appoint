@@ -80,8 +80,11 @@ AppointmentItem = React.createClass({
         <div className="row appointment-item" onClick={ this.nagvigateToAppointmentPage }>
           <div className="col-md-4">
             <h4>{ this.props.appointment.purpose }</h4>
-            <p>{ (this.state.currentUser._id === this.props.appointment.initiator) ? 'Digga, das ist mein Appointment' : null}
-            </p>
+              <p>
+                <span className="list-label">
+                  { (this.state.currentUser._id === this.props.appointment.initiator) ? 'Initiator' : null}
+                </span>
+              </p>
           </div>
           <div className="col-md-6 col-full-height">
             <p><span className="appointment-label">Location:</span> { this.props.appointment.location } </p>
