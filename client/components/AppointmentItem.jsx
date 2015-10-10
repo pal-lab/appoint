@@ -64,8 +64,8 @@ AppointmentItem = React.createClass({
     if(!this.checkAcknowledged() && !isOwnAppointment) {
       answerInvitationButtons = (
         <div>
-          <p><span className="appnt-icon icon-plus" onClick={ this.acceptAppointment }></span></p>
-          <p><span className="appnt-icon icon-cross" onClick={ this.declineAppointment }></span></p>
+          <p><span className="appnt-icon icon-check" style={{ padding: '7px', margin: '10px' }}onClick={ this.acceptAppointment }></span></p>
+          <p><span className="appnt-icon icon-cross" style={{ padding: '7px', margin: '10px' }}onClick={ this.declineAppointment }></span></p>
         </div>
       );
     };
