@@ -29,7 +29,6 @@ UserSidebarSection = React.createClass({
 
     if (this.props.user) {
       const email = this.props.user.emails[0].address;
-      const emailUsername = email.substring(0, email.indexOf('@'));
 
       const arrowDirection = this.state.menuOpen ? "up" : "down";
       const arrowIconClass = "icon-arrow-" + arrowDirection;
@@ -38,7 +37,7 @@ UserSidebarSection = React.createClass({
         <div className="btns-group-vertical">
           <a href="#" className="btn-secondary" onClick={ this.toggleMenuOpen }>
             <span className={ arrowIconClass } />
-            { emailUsername }
+            { this.props.user.profile.firstname }
           </a>
           { this.state.menuOpen ?
             <a className="btn-secondary" onClick={ this.logout } >Logout</a> : ""}
