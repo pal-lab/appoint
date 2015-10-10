@@ -102,17 +102,25 @@ AppointmentSettings = React.createClass({
 
     } else {
         renderObject = (
-          <div className="row" style={{paddingTop: '50px'}}>
+          <div className="row" style={{paddingTop: '50px', paddingBottom: '50px'}}>
             <div className="col-xs-12 col-md-8 col-md-offset-2">
-            <div className="col-xs-12 col-md-12">
-              <h2>{ this.props.appointment.purpose }</h2><br/>
+            <div className="col-xs-12 col-md-12" style={{textAlign: 'center', paddingBottom: '25px'}}>
+              <h2 >{ this.props.appointment.purpose }</h2>
+              <p>
+                <span className="status">Status:&nbsp;</span> { this.props.appointment.status}
+              </p>
             </div>
-            <div className="col-xs-12 col-md-12">
-              <p><span>Location:</span> { this.props.appointment.location } </p>
-            </div>
-            <div className="row col-xs-12 col-md-12">
+            <div className="row col-md-12">
               <div className="col-md-6">
+                <p><span>Location:</span> { this.props.appointment.location } </p>
+              </div>
+               <div className="col-md-6">
                 <p><span>Earliest:</span> { earliest } </p>
+              </div>
+            </div>
+            <div className="row col-md-12">
+              <div className="col-md-6">
+                <p><span>Duration:</span> { this.props.appointment.duration }min </p>
               </div>
               <div className="col-md-6">
                 <p><span>Latest:</span> { latest } </p>
