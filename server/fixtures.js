@@ -52,7 +52,7 @@ var accounts = [{
 }];
 
 // Appoint MVP bauen
-// 2/3 voted users
+// 2/3 voted users - voting
 data.push({
   appointment: function(initiator) {
     return {
