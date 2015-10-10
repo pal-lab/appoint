@@ -38,7 +38,7 @@ UserSidebarSection = React.createClass({
         <div className="btns-group-vertical">
           <a href="#" className="btn-secondary" onClick={ this.toggleMenuOpen }>
             <span className={ arrowIconClass } />
-            { emailUsername }
+            { this.props.user.profile.firstname }
           </a>
           { this.state.menuOpen ?
             <a className="btn-secondary" onClick={ this.logout } >Logout</a> : ""}
