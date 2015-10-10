@@ -32,6 +32,7 @@ AppointmentItem = React.createClass({
 
   checkAcknowledged() {
     if (this.state.currentUser._id !== this.props.appointment.initiator && this.props.appointment.status === "invited"){
+      
       let count = AppointmentEvents.find({$and: [{
         account: Meteor.userId()
       }, {
@@ -41,6 +42,9 @@ AppointmentItem = React.createClass({
           type: 'declined'
         }]
       }]}).count();
+
+      console.log(this.props.appointment.purpose + " -> Count: " +count);
+
       if(count>0){
         return true;
       } else{
@@ -70,7 +74,7 @@ AppointmentItem = React.createClass({
             <p><span className="appointment-label">Status:</span> { this.props.appointment.status } </p>
           </div>
           <div className="col-md-2 col-full-hight">
-            <p><span className="appnt-icon icon-check" onClick={ this.acceptAppointment }></span></p>
+            <p><span className="appnt-icon icon-plus" onClick={ this.acceptAppointment }></span></p>
             <p><span className="appnt-icon icon-cross" onClick={ this.declineAppointment }></span></p>
           </div>
         </div>
