@@ -6,13 +6,17 @@ UserProfile = React.createClass({
       userLoading: Meteor.loggingIn()
     }
   },
+  getInitialState() {
+
+    return {
+      numberOfChoice: Math.round(Math.random() * 10) + 1
+    };
+  },
 
   funnyUserInteractions() {
-    let choice = Math.round(Math.random() * 10) + 1;
     let firstname = this.data.user.profile.firstname;
-    let msg;
-
-    switch (choice) {
+    
+    switch (this.state.numberOfChoice) {
         case 1:
           return 'Okay, lets do it. We CAN change your user name together you little hero';
         case 2:
