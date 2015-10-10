@@ -77,7 +77,7 @@ AuthJoinPage = React.createClass({
           <div className="wrapper-auth">
             <h1 className="title-auth">Join.</h1>
             <p className="subtitle-auth">
-              Joining allows you to make private lists
+              Joining allows you to be cool.
             </p>
 
             <form onSubmit={ this.onSubmit }>
@@ -87,13 +87,13 @@ AuthJoinPage = React.createClass({
                 type="text"
                 name="firstname"
                 label="Firstname"
-                iconClass="icon-check" />
+                iconClass="icon-user-add" />
 
               <AuthFormInput hasError={!! this.state.errors.lastname}
                 type="text"
                 name="lastname"
                 label="Lastname"
-                iconClass="icon-check" />
+                iconClass="icon-user-add" />
 
               <AuthFormInput
                 hasError={!!this.state.errors.email}

@@ -9,7 +9,7 @@ const {
 ProposalList = React.createClass({
 
     mixins: [Navigation, State],
-    
+
     propTypes: {
       proposals: React.PropTypes.array.isRequired,
       appointment: React.PropTypes.object.isRequired
@@ -31,12 +31,9 @@ ProposalList = React.createClass({
 
     return (
       <div className="page proposals-list">
-        <ul className="nav nav-pills nav-justified">
-            <li>
-              <a onClick={ this.navigateToAppointmentPage }>Back to Appointment</a>
-            </li>
-        </ul>
-
+        <AppointmentTabBar
+          appointment = { this.props.appointment }
+          />
         <div className="list-items">
           { allproposals }
         </div>

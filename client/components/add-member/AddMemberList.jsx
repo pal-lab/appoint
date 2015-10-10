@@ -15,27 +15,22 @@ AddMemberList = React.createClass({
     appointment: React.PropTypes.object.isRequired
   },
 
-  navigateToAppointmentPage() {
-   this.transitionTo('appointmentpage', {appointment_id: this.props.appointment._id});
-  },
-
   render() {
     var allMembers = this.props.members.map((member) => {
       return (
         <AddMemberItem
           key = { member._id}
           member = { member }
-          appointment = { this.props.appointment }/>
+          appointment = { this.props.appointment }
+          />
       );
     });
 
     return (
       <div className="page member-list">
-        <ul className="nav nav-pills nav-justified">
-            <li>
-              <a onClick={ this.navigateToAppointmentPage }>Back to Appointment</a>
-            </li>
-          </ul>
+        <AppointmentTabBar
+          appointment = { this.props.appointment }
+          />
         <div className="list-items">
           { allMembers }
         </div>
