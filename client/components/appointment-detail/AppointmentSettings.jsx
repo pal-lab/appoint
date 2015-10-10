@@ -14,8 +14,8 @@ AppointmentSettings = React.createClass({
       purpose: this.props.appointment.purpose,
       location: this.props.appointment.location,
       duration: this.props.appointment.duration,
-      earliest: moment(this.props.appointment.earliest),
-      latest: moment(this.props.appointment.latest)
+      earliest: this.props.appointment.earliest,
+      latest: this.props.appointment.latest
     };
   },
 
@@ -24,22 +24,35 @@ AppointmentSettings = React.createClass({
       purpose: this.refs.purpose.getDOMNode().value,
       location: this.refs.location.getDOMNode().value,
       duration: this.refs.duration.getDOMNode().value,
+      earliest: this.refs.earliest.getDOMNode().value,
+      latest: this.refs.latest.getDOMNode().value
     });
   },
 
   handleBlur() {
+    
+    if (this.refs.earliest.getDOMNode().value === "")
+      earliestDate = null;
+    else
+      earliestDate = new Date(this.refs.earliest.getDOMNode().value);
+    if (this.refs.latest.getDOMNode().value === "")
+      latestDate = null;
+    else
+      latestDate = new Date(this.refs.latest.getDOMNode().value);
+
     this.updateAppointmentWithNewData({
       purpose: this.refs.purpose.getDOMNode().value,
       location: this.refs.location.getDOMNode().value,
       duration: this.refs.duration.getDOMNode().value,
-      earliest: this.state.earliest.toDate(),
-      latest: this.state.latest.toDate()
+      earliest: earliestDate,
+      latest: latestDate
     });
     console.log("Changes saved");
   },
 
   updateAppointmentWithNewData(newData) {
     // Meteor.update({_id: this.state.appointment_id}, {$set: newData });
+    console.log(newData);
     Meteor.call("appointment/update",this.state.appointment_id,newData);
   },
 
@@ -48,8 +61,8 @@ AppointmentSettings = React.createClass({
 
     let renderObject;
 
-    let earliest= moment(this.props.appointment.earliest).format('L');
-    let latest= moment(this.props.appointment.latest).format('L');
+    let earliest= moment(this.props.appointment.earliest).format('D MMMM YYYY');
+    let latest= moment(this.props.appointment.latest).format('D MMMM YYYY');
     
 
     if(this.props.appointment.initiator === Meteor.user()._id && this.props.appointment.status === "draft") {
@@ -94,6 +107,30 @@ AppointmentSettings = React.createClass({
                   onBlur={this.handleBlur}
                   value={this.state.duration}
                   />
+              </div>
+              <div className="form-group">
+                <label>Earliest</label>
+                <input
+                  type="date"
+                  className="form-control"
+                  id="earliest"
+                  ref="earliest"
+                  onChange={this.handleChange}
+                  onBlur={this.handleBlur}
+                  value={this.state.earliest}
+                />
+              </div>
+              <div className="form-group">
+                <label>Latest</label>
+                <input
+                  type="date"
+                  className="form-control"
+                  id="latest"
+                  ref="latest"
+                  onChange={this.handleChange}
+                  onBlur={this.handleBlur}
+                  value={this.state.latest}
+                />
               </div>
             </form>
           </div>
