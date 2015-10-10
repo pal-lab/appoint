@@ -77,7 +77,7 @@ AuthJoinPage = React.createClass({
           <div className="wrapper-auth">
             <h1 className="title-auth">Join.</h1>
             <p className="subtitle-auth">
-              Joining allows you to make private lists
+              Joining allows you to be cool.
             </p>
 
             <form onSubmit={ this.onSubmit }>
