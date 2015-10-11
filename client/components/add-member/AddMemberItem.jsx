@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 AddMemberItem = React.createClass({
   propTypes: {
     member: React.PropTypes.object.isRequired,

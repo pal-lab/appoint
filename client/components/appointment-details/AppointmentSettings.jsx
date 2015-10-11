@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 const Link = ReactRouter.Link;
 
 AppointmentSettings = React.createClass({
@@ -28,7 +29,7 @@ AppointmentSettings = React.createClass({
   },
 
   handleBlur() {
-    
+
     if (this.refs.earliest.getDOMNode().value === "")
       earliestDate = null;
     else
@@ -59,10 +60,10 @@ AppointmentSettings = React.createClass({
 
     let earliest= moment(this.props.appointment.earliest).format('D MMMM YYYY');
     let latest= moment(this.props.appointment.latest).format('D MMMM YYYY');
-    
+
 
     if(this.props.appointment.initiator === Meteor.user()._id && this.props.appointment.status === "draft") {
-      
+
       renderObject = (
         <div className="row" style={{paddingTop: '50px'}}>
           <div className="col-xs-12 col-md-8 col-md-offset-2">

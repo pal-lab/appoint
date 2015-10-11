@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 UserProfile = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
@@ -15,7 +16,7 @@ UserProfile = React.createClass({
 
   funnyUserInteractions() {
     let firstname = this.data.user.profile.firstname;
-    
+
     switch (this.state.numberOfChoice) {
         case 1:
           return 'Okay, lets do it. We CAN change your user name together you little hero';

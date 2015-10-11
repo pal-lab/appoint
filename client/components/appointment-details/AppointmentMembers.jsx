@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 const Link = ReactRouter.Link;
 
 AppointmentMembers = React.createClass({
