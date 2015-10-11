@@ -9,12 +9,10 @@ ProposalItem = React.createClass({
 
   acceptProposal() {
     Meteor.call('appointment/accept', this.props.appointment._id, this.props.proposal.date);
-    console.log('Accepted this proposal: ' + this.props.proposal.date);
   },
 
   deleteProposal() {
     Meteor.call('appointment/reject', this.props.appointment._id, this.props.proposal.date);
-    console.log('Rejected this proposal: ' + this.propsproposal.date);
   },
 
   render() {
