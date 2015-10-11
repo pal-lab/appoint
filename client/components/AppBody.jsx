@@ -41,11 +41,8 @@ AppBody = React.createClass({
 
 
     if (Meteor.user()){
-        console.log('Initial: User logged in');
         subs.subscribe('appointment', Meteor.user());
     }
-
-    console.log(subs);
 
     subs.subscribe('users');
 
@@ -69,21 +66,16 @@ AppBody = React.createClass({
 
   getMeteorData() {
 
-    console.log('getMeteorData');
-
     let user = Meteor.user();
 
     if(user){
-      console.log('MeteorData: User logged in');
       this.state.subcriptionManager.subscribe('appointment', user);
     }
     
     // Get the current routes from React Router
     const routes = this.getRoutes();
     // If we are at the root route, and the subscrioptions are ready
-    console.log('Subscriptions readiness: ' +this.state.subcriptionManager.ready);
-    console.log('Routes länge: ' +routes.length);
-    console.log('Routes default: ' +routes[1].isDefault);
+    
     if (routes.length > 1 && routes[1].isDefault && user) {
       this.replaceWith("inboxPage");
     }
@@ -111,8 +103,6 @@ AppBody = React.createClass({
     if (this.state.menuOpen) {
       appBodyContainerClass += " menu-open";
     }
-
-    console.log(this.state.subcriptionManager.ready);
 
     return (
       <div id="container" className={ appBodyContainerClass }>
