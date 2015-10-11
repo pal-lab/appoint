@@ -13,8 +13,8 @@ AppointmentSettings = React.createClass({
       purpose: this.props.appointment.purpose,
       location: this.props.appointment.location,
       duration: this.props.appointment.duration,
-      earliest: moment(this.props.appointment.earliest).format('YYYY[-]MM[-]DD'),
-      latest: moment(this.props.appointment.latest).format('YYYY[-]MM[-]DD')
+      earliest: moment().format('YYYY[-]MM[-]DD'),
+      latest: moment().add(1, 'day').format('YYYY[-]MM[-]DD')
     };
   },
 
@@ -57,11 +57,6 @@ AppointmentSettings = React.createClass({
     let className = "appointment-settings";
 
     let renderObject;
-
-    let earliest= moment(this.props.appointment.earliest).format('D MMMM YYYY');
-    let latest= moment(this.props.appointment.latest).format('D MMMM YYYY');
-
-
     if(this.props.appointment.initiator === Meteor.user()._id && this.props.appointment.status === "draft") {
 
       renderObject = (
