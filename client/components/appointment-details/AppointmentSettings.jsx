@@ -12,7 +12,7 @@ AppointmentSettings = React.createClass({
       appointment_id: this.props.appointment._id,
       purpose: this.props.appointment.purpose,
       location: this.props.appointment.location,
-      duration: this.props.appointment.duration,
+      duration: 30,
       earliest: moment().format('YYYY[-]MM[-]DD'),
       latest: moment().add(1, 'day').format('YYYY[-]MM[-]DD')
     };
