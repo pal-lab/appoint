@@ -1,6 +1,5 @@
 Meteor.publish('users', function() {
   if (this.userId) {
-
     return Meteor.users.find({}, {
       emails: 1,
       profile: 1
@@ -37,8 +36,17 @@ Meteor.publish('appointmentinvitees', function(apId) {
 });
 
 
+Meteor.publish('myappointmentevents', function(invites) {
+  if (this.userId) {
+    return AppointmentEvents.find({appointment: {$in: invites}});;
+  } else {
+    this.ready();
+  }
+});
+
+
+
 Meteor.publish('appointmentevents', function(apId) {
-  check(apId, String);
   if (this.userId) {
     return AppointmentEvents.find({
       appointment: apId
