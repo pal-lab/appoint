@@ -30,9 +30,21 @@ AppBody = React.createClass({
   mixins: [ReactMeteorData, Navigation, State],
 
   getInitialState() {
+
+    var subs = new SubsManager({
+          // maximum number of cache subscriptions
+          cacheLimit: 50,
+          // any subscription will be expire after 30 minute, if it's not subscribed again
+          expireIn: 30
+    });
+
+    subs.subscribe('appointment', Meteor.user());
+    subs.subscribe('users');
+
     return {
       menuOpen: false,
-      currentUser: Meteor.user()
+      currentUser: Meteor.user(),
+      subcriptionManager: subs
     };
   },
 
@@ -46,26 +58,21 @@ AppBody = React.createClass({
   };
   },
 
-  getMeteorData() {
-    const user = Meteor.user();
-    const subHandles = [
-        Meteor.subscribe("appointment", user),
-        //Meteor.subscribe("appointmentproposal")
-    ];
-    const subsReady = _.all(subHandles, function (handle) {
-      return handle.ready();
-    });
 
+  getMeteorData() {
+    
     // Get the current routes from React Router
     const routes = this.getRoutes();
     // If we are at the root route, and the subscrioptions are ready
-    if (routes.length > 1 && routes[1].isDefault && subsReady) {
-      // Redirect to the route for the first todo list
+    console.log('Subscriptions readiness: ' +this.state.subcriptionManager.ready);
+    console.log('Routes länge: ' +routes.length);
+    console.log('Routes default: ' +routes[1].isDefault);
+    if (routes.length > 1 && routes[1].isDefault && this.state.subcriptionManager.ready ) {
       this.replaceWith("inboxPage");
     }
 
     return {
-      subsReady: subsReady,
+      subsReady: this.state.subcriptionManager.ready,
       currentUser: Meteor.user(),
       disconnected: ShowConnectionIssues.get() && (! Meteor.status().connected)
     };
@@ -99,7 +106,7 @@ AppBody = React.createClass({
         <div className="content-overlay" onClick={ this.toggleMenuOpen }></div>
 
         <div id="content-container">
-          { this.data.subsReady ?
+          { this.state.subcriptionManager.ready ?
             <RouteHandler /> :
             <AppLoading /> }
         </div>
