@@ -41,11 +41,11 @@ AppointmentItem = React.createClass({
     let isOwnAppointment = (this.state.currentUser._id === this.props.appointment.initiator);
 
     let answerInvitationButtons = null;
-    if(!this.hasAcknowledged() && !isOwnAppointment) {
+    if(!this.hasAcknowledged() && !isOwnAppointment && this.props.appointment.status === "invited") {
       answerInvitationButtons = (
-        <div>
-          <p><span className="appnt-icon icon-check" style={{ padding: '7px', margin: '10px' }}onClick={ this.acceptAppointment }></span></p>
-          <p><span className="appnt-icon icon-cross" style={{ padding: '7px', margin: '10px' }}onClick={ this.declineAppointment }></span></p>
+        <div className="row">
+          <p><span className="appnt-icon icon-check" style={{ padding: '7px', margin: '10px' }} onClick={ this.acceptAppointment }></span></p>
+          <p><span className="appnt-icon icon-cross" style={{ padding: '7px', margin: '10px' }} onClick={ this.declineAppointment }></span></p>
         </div>
       );
     };
@@ -62,7 +62,12 @@ AppointmentItem = React.createClass({
       <div className="row appointment-item" >
         <div className="col-md-4" onClick={ this.navigateToAppointmentPage }>
           <h4>{ this.props.appointment.purpose }</h4><br/>
+          <div className="row">
+            <p><span className="appointment-label">Invited Users </span><span className="circle-mini" >{ Meteor.appointmentQueries.invitedUsers(this.props.appointment._id) }</span></p>
+          </div>
+
           { initiatorLabel }
+
         </div>
         <div className="col-md-6 col-full-height" onClick={ this.navigateToAppointmentPage }>
           <p><span className="appointment-label">Location:</span> { this.props.appointment.location } </p>
@@ -74,6 +79,7 @@ AppointmentItem = React.createClass({
 
         <div className="col-md-2 col-full-hight">
           { answerInvitationButtons }
+          
         </div>
 
       </div>
