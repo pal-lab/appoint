@@ -16,7 +16,8 @@ Meteor.publish('appointment', function(user) {
     return Appointments.find( {$or : [{
       initiator: this.userId
   }, {
-      _id: { $in: user.profile.invitations}
+      _id: { $in: user.profile.invitations},
+      status: { $ne: 'draft' }
   }]});
   } else {
     this.ready();
