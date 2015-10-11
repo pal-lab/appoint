@@ -12,45 +12,8 @@ ProposalPage = React.createClass({
   getMeteorData() {
     // Get list ID from ReactRouter
     const appointment_id = this.getParams().appointment_id;
-    const proposalsSubHandle = Meteor.subscribe("appointmentevents", appointment_id);
-    var proposals = [];
-    AppointmentEvents.find({
-      type: 'proposed'
-    }).forEach(function(prop) {
-      var vote = AppointmentEvents.find({
-        $and: [
-          {
-            date: prop.date,
-            account: Meteor.userId()
-          }, {
-            $or: [
-              {
-                type: 'accepted'
-              }, {
-                type: 'rejected'
-              }
-            ]
-          }
-        ]
-      }, {
-        sort: {
-          createdAt: -1
-        },
-        limit: 1
-      }).fetch();
-      if (vote.length > 0) {
-        proposals.push({
-          date: prop.date,
-          vote: vote[0].type
-        });
-      } else {
-        proposals.push({
-          _id: vote._id,
-          date: prop.date,
-          vote: 'notVoted'
-        });
-      }
-    });
+    const proposalsSubHandle = Meteor.subscribe('myappointmentevents', Meteor.user().profile.invitations);
+    var proposals = Meteor.appointmentQueries.retrieveProposalList(appointment_id);
 
     return {
       appointment: Appointments.findOne({ _id: appointment_id }),
