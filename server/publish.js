@@ -36,9 +36,8 @@ Meteor.publish('appointmentinvitees', function(apId) {
 });
 
 
-Meteor.publish('myappointmentevents', function() {
+Meteor.publish('myappointmentevents', function(invites) {
   if (this.userId) {
-    var invites = Meteor.user().profile.invitations;
     return AppointmentEvents.find({appointment: {$in: invites}});;
   } else {
     this.ready();
