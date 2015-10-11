@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 MemberItem = React.createClass({
   propTypes: {
     firstname: React.PropTypes.string,
@@ -7,9 +8,9 @@ MemberItem = React.createClass({
 
   render() {
     return (
-      
+
         <div className="circle">{ this.props.initials }</div>
-      
+
     );
   }
 });
