@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 const Link = ReactRouter.Link;
 
 const {
@@ -23,7 +24,7 @@ AppointmentItem = React.createClass({
   },
 
   acceptAppointment(){
-    Meteor.call('appointment/accept', this.props.appointment._id);
+    Meteor.call('appointment/approve', this.props.appointment._id);
   },
 
   declineAppointment(){
