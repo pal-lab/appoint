@@ -8,8 +8,6 @@ AppointmentSettings = React.createClass({
   getInitialState() {
 
     return {
-      // TODO: Abruf des wirklichen Status
-      editableAppointment: this.props.appointment.status,
       appointment_id: this.props.appointment._id,
       purpose: this.props.appointment.purpose,
       location: this.props.appointment.location,
@@ -47,12 +45,10 @@ AppointmentSettings = React.createClass({
       earliest: earliestDate,
       latest: latestDate
     });
-    console.log("Changes saved");
+    // console.log("Changes saved");
   },
 
   updateAppointmentWithNewData(newData) {
-    // Meteor.update({_id: this.state.appointment_id}, {$set: newData });
-    console.log(newData);
     Meteor.call("appointment/update",this.state.appointment_id,newData);
   },
 

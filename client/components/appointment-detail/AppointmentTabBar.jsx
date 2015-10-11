@@ -43,6 +43,21 @@ AppointmentTabBar = React.createClass({
         );
       }
 
+      let proposalsButton;
+      if (this.props.appointment.status === 'voting') {
+        proposalsButton = (
+          <li>
+            <Link
+              className="list-todo"
+              to="proposalpage"
+              params={{appointment_id: this.props.appointment._id}}
+              >
+              Proposed Dates
+            </Link>
+          </li>
+        );
+      }
+
       let renderObject = (
         <div className="page appointment-details">
           <ul className="nav nav-pills nav-justified">
@@ -55,15 +70,7 @@ AppointmentTabBar = React.createClass({
                 Overview
               </Link>
             </li>
-            <li>
-              <Link
-                className="list-todo"
-                to="proposalpage"
-                params={{appointment_id: this.props.appointment._id}}
-                >
-                Proposed Dates
-              </Link>
-            </li>
+            { proposalsButton }
             { addMemberButton }
             { invitationButton }
           </ul>
