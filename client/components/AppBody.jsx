@@ -42,6 +42,7 @@ AppBody = React.createClass({
 
     if (Meteor.user()){
         subs.subscribe('appointment', Meteor.user());
+        subs.subscribe('myappointmentevents', Meteor.user().profile.invitations);
     }
 
     subs.subscribe('users');
@@ -70,6 +71,7 @@ AppBody = React.createClass({
 
     if(user){
       this.state.subcriptionManager.subscribe('appointment', user);
+      this.state.subcriptionManager.subscribe('myappointmentevents', Meteor.user().profile.invitations);
     }
     
     // Get the current routes from React Router
