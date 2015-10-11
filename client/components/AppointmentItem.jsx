@@ -35,13 +35,16 @@ AppointmentItem = React.createClass({
     return Meteor.appointmentQueries.hasAcknowledgment(this.props.appointment._id);
   },
 
+  isOwnAppointment() {
+    return (this.state.currentUser._id === this.props.appointment.initiator);
+  },
+
   render() {
     let earliestDate = moment(this.props.appointment.earliest).format('DD/MM/YYYY');
     let latestDate = moment(this.props.appointment.latest).format('DD/MM/YYYY');
-    let isOwnAppointment = (this.state.currentUser._id === this.props.appointment.initiator);
 
     let answerInvitationButtons = null;
-    if(!this.hasAcknowledged() && !isOwnAppointment && this.props.appointment.status === "invited") {
+    if(!this.hasAcknowledged() && !this.isOwnAppointment() && this.props.appointment.status === "invited") {
       answerInvitationButtons = (
         <div className="row">
           <p><span className="appnt-icon icon-check" style={{ padding: '7px', margin: '10px' }} onClick={ this.acceptAppointment }></span></p>
