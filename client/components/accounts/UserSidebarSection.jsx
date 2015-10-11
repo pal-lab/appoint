@@ -1,7 +1,15 @@
 /*jshint esnext: true */
 const Link = ReactRouter.Link;
 
+const {
+  Navigation,
+  State
+} = ReactRouter;
+
 UserSidebarSection = React.createClass({
+
+  mixins: [Navigation, State],
+
   getInitialState() {
     return {
       menuOpen: false
@@ -21,6 +29,7 @@ UserSidebarSection = React.createClass({
   },
 
   logout() {
+    this.transitionTo('signin');
     Meteor.logout();
   },
 
