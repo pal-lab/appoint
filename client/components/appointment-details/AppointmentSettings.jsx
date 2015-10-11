@@ -144,7 +144,7 @@ AppointmentSettings = React.createClass({
                 <p><span>Location:</span> { this.props.appointment.location } </p>
               </div>
                <div className="col-md-6">
-                <p><span>Earliest:</span> { earliest } </p>
+                <p><span>Earliest:</span> { this.state.earliest } </p>
               </div>
             </div>
             <div className="row col-md-12">
@@ -152,7 +152,7 @@ AppointmentSettings = React.createClass({
                 <p><span>Duration:</span> { this.props.appointment.duration }min </p>
               </div>
               <div className="col-md-6">
-                <p><span>Latest:</span> { latest } </p>
+                <p><span>Latest:</span> { this.state.latest } </p>
               </div>
             </div>
           </div>
