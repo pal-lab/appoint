@@ -12,7 +12,7 @@ ProposalPage = React.createClass({
   getMeteorData() {
     // Get list ID from ReactRouter
     const appointment_id = this.getParams().appointment_id;
-    const proposalsSubHandle = Meteor.subscribe('myappointmentevents', Meteor.user().profile.invitations);
+    Meteor.subscriptionManager.subscribe('myappointmentevents', Meteor.user().profile.invitations);
     var proposals = Meteor.appointmentQueries.retrieveProposalList(appointment_id);
 
     return {

@@ -6,7 +6,7 @@ UserSettings = React.createClass({
   },
 
   getInitialState() {
-let user = Meteor.user();
+    let user = Meteor.user();
     return {
      firstname: user.profile.firstname,
      lastname: user.profile.lastname

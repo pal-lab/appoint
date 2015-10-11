@@ -12,8 +12,10 @@ AppointmentPage = React.createClass({
     const appointment_id = this.getParams().appointment_id;
 
     // Subscribe to the appointment we need to render this component
-    // const membersSubHandle = Meteor.subscribe("users");
-    const appointmentInitiator = Appointments.findOne({ _id: appointment_id }).initiator;
+    let appointmentInitiator = null;
+    if(Meteor.subscriptionManager.ready){
+      appointmentInitiator = Appointments.findOne({ _id: appointment_id }).initiator;
+    }
     return {
       appointment: Appointments.findOne({ _id: appointment_id }),
       invitedMembers: Meteor.users.find({ '_id': { $ne: appointmentInitiator } , 'profile.invitations': { $in: [ appointment_id ] }}, {
@@ -33,7 +35,6 @@ AppointmentPage = React.createClass({
     return (
       <div className="page lists-show">
         <HeaderBar
-          // title={this.data.appointment.purpose}
           status={"AppointmentPage"}
           showLoadingIndicator={this.data.appointmentLoading} />
 
