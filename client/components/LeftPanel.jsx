@@ -6,10 +6,10 @@ LeftPanel = React.createClass({
     currentUser: React.PropTypes.object,
   },
   render() {
-    return (
-      <section id="menu">
-        <UserSidebarSection user={ this.props.currentUser } />
-        <div className="list-todos">
+    let menuItems = null;
+    if (Meteor.user()){
+      menuItems = (
+          <div className="list-todos">
           <Link
             className="list-todo"
             to="inboxPage">
@@ -21,6 +21,12 @@ LeftPanel = React.createClass({
             Settings
           </Link>
         </div>
+        );
+    }
+    return (
+      <section id="menu">
+        <UserSidebarSection user={ this.props.currentUser } />
+        { menuItems }
       </section>
     );
   }

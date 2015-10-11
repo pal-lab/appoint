@@ -49,7 +49,8 @@ AuthSignInPage = React.createClass({
     });
   },
   render() {
-    return <div className="page auth">
+    return (
+      <div className="page auth">
       <nav>
         <MenuOpenToggle />
       </nav>
@@ -87,5 +88,6 @@ AuthSignInPage = React.createClass({
         </Link>
       </div>
     </div>
+    )
   }
 });
