@@ -16,6 +16,7 @@ AppointmentTabBar = React.createClass({
   sendInvitations() {
     Meteor.call('appointment/invite', this.props.appointment._id);
     console.log('Invitations sent!');
+    this.transitionTo('appointmentpage', {appointment_id: this.props.appointment._id});
   },
 
   render() {
