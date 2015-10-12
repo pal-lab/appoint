@@ -23,11 +23,11 @@ AppointmentItem = React.createClass({
     this.transitionTo('appointmentpage', {appointment_id: this.props.appointment._id});
   },
 
-  acceptAppointment(){
+  acceptAppointment() {
     Meteor.call('appointment/approve', this.props.appointment._id);
   },
 
-  declineAppointment(){
+  declineAppointment() {
     Meteor.call('appointment/decline', this.props.appointment._id);
   },
 
@@ -44,21 +44,21 @@ AppointmentItem = React.createClass({
     let latestDate = moment(this.props.appointment.latest).format('DD/MM/YYYY');
 
     let answerInvitationButtons = null;
-    if(!this.hasAcknowledged() && !this.isOwnAppointment() && this.props.appointment.status === "invited") {
+    if (!this.hasAcknowledged() && !this.isOwnAppointment() && this.props.appointment.status === 'invited') {
       answerInvitationButtons = (
         <div className="row">
           <p><span className="appnt-icon icon-check" style={{ padding: '7px', margin: '10px' }} onClick={ this.acceptAppointment }></span></p>
           <p><span className="appnt-icon icon-cross" style={{ padding: '7px', margin: '10px' }} onClick={ this.declineAppointment }></span></p>
         </div>
       );
-    };
+    }
 
     let initiatorLabel = null;
-    if(this.state.currentUser._id === this.props.appointment.initiator) {
+    if (this.state.currentUser._id === this.props.appointment.initiator) {
       initiatorLabel = (
         <span className="list-label" style={{ padding: '4px', letterSpacing: '2px' }}>Initiator</span>
       );
-    };
+    }
 
     let renderObject;
     renderObject = (
@@ -82,7 +82,6 @@ AppointmentItem = React.createClass({
 
         <div className="col-md-2 col-full-hight">
           { answerInvitationButtons }
-          
         </div>
 
       </div>
