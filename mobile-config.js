@@ -1,6 +1,6 @@
 App.info({
   name: 'Appoint',
-  description: 'A simple todo list app built in Meteor.',
+  description: 'GET APPOINTED',
   author: 'pal.lap appoint team',
   email: 'TODO',
   website: 'TODO',

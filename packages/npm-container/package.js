@@ -26,5 +26,5 @@ Package.onUse(function(api) {
 Cordova.depends({
     'cordova-plugin-calendar': 'https://github.com/EddyVerbruggen/Calendar-PhoneGap-Plugin.git#658d8ff078d44da4fd4d16f4b8a050115a625812',
     //'cordova-plugin-camera': '1.2.0'
-    'cordova-plugin-dialogs': 'https://github.com/apache/cordova-plugin-dialogs#fb994515f0b8ff054482ebd5740964204c17c3b3'
+    //'cordova-plugin-dialogs': 'https://github.com/apache/cordova-plugin-dialogs#fb994515f0b8ff054482ebd5740964204c17c3b3'
 });
