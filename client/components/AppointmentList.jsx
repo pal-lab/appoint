@@ -1,25 +1,25 @@
 /*jshint esnext: true */
 
 AppointmentList = React.createClass({
-    propTypes: {
-        appointments: React.PropTypes.array.isRequired
-    },
+  propTypes: {
+    appointments: React.PropTypes.array.isRequired
+  },
 
-    render() {
-    var allAppointments = this.props.appointments.map((appointment) => {
+  render() {
+    let allAppointments = this.props.appointments.map((appointment) => {
       return (
         <AppointmentItem
-          key={ appointment._id }
-          appointment={ appointment } />
-      );
+        key={ appointment._id }
+        appointment={ appointment } />
+        );
     });
 
     return (
       <div className="list-items">
-        <ul>
-          { allAppointments }
-        </ul>
+      <ul>
+      { allAppointments }
+      </ul>
       </div>
-    );
+      );
   }
 });

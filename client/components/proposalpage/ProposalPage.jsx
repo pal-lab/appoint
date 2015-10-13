@@ -12,10 +12,12 @@ ProposalPage = React.createClass({
   getMeteorData() {
     // Get list ID from ReactRouter
     const appointment_id = this.getParams().appointment_id;
-    const proposalsSubHandle = Meteor.subscribe("appointmentproposal", appointment_id);
+    Meteor.subscriptionManager.subscribe('myappointmentevents', Meteor.user().profile.invitations);
+    var proposals = Meteor.appointmentQueries.retrieveProposalList(appointment_id);
+
     return {
-      proposals: AppointmentProposals.find().fetch(),
       appointment: Appointments.findOne({ _id: appointment_id }),
+      proposals: proposals
     };
   },
 
@@ -24,12 +26,14 @@ ProposalPage = React.createClass({
       <div className="page lists-show">
         <HeaderBar
           status={"ProposalPage"}
-          showLoadingIndicator={this.data.tasksLoading}/>
+          showLoadingIndicator={this.data.tasksLoading}
+          />
 
         <div className="content-scrollable">
           <ProposalList
             proposals={this.data.proposals}
-            appointment = { this.data.appointment }/>
+            appointment = { this.data.appointment }
+            />
         </div>
       </div>
     );

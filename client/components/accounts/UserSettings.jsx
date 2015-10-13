@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 const Link = ReactRouter.Link;
 
 UserSettings = React.createClass({
@@ -5,7 +6,7 @@ UserSettings = React.createClass({
   },
 
   getInitialState() {
-let user = Meteor.user();
+    let user = Meteor.user();
     return {
      firstname: user.profile.firstname,
      lastname: user.profile.lastname

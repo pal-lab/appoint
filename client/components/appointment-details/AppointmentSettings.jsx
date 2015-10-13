@@ -1,3 +1,4 @@
+/*jshint esnext: true */
 const Link = ReactRouter.Link;
 
 AppointmentSettings = React.createClass({
@@ -8,8 +9,6 @@ AppointmentSettings = React.createClass({
   getInitialState() {
 
     return {
-      // TODO: Abruf des wirklichen Status
-      editableAppointment: this.props.appointment.status,
       appointment_id: this.props.appointment._id,
       purpose: this.props.appointment.purpose,
       location: this.props.appointment.location,
@@ -30,7 +29,7 @@ AppointmentSettings = React.createClass({
   },
 
   handleBlur() {
-    
+
     if (this.refs.earliest.getDOMNode().value === "")
       earliestDate = null;
     else
@@ -47,12 +46,10 @@ AppointmentSettings = React.createClass({
       earliest: earliestDate,
       latest: latestDate
     });
-    console.log("Changes saved");
+    // console.log("Changes saved");
   },
 
   updateAppointmentWithNewData(newData) {
-    // Meteor.update({_id: this.state.appointment_id}, {$set: newData });
-    console.log(newData);
     Meteor.call("appointment/update",this.state.appointment_id,newData);
   },
 
@@ -60,13 +57,8 @@ AppointmentSettings = React.createClass({
     let className = "appointment-settings";
 
     let renderObject;
-
-    let earliest= moment(this.props.appointment.earliest).format('D MMMM YYYY');
-    let latest= moment(this.props.appointment.latest).format('D MMMM YYYY');
-    
-
     if(this.props.appointment.initiator === Meteor.user()._id && this.props.appointment.status === "draft") {
-      
+
       renderObject = (
         <div className="row" style={{paddingTop: '50px'}}>
           <div className="col-xs-12 col-md-8 col-md-offset-2">
@@ -152,7 +144,7 @@ AppointmentSettings = React.createClass({
                 <p><span>Location:</span> { this.props.appointment.location } </p>
               </div>
                <div className="col-md-6">
-                <p><span>Earliest:</span> { earliest } </p>
+                <p><span>Earliest:</span> { this.state.earliest } </p>
               </div>
             </div>
             <div className="row col-md-12">
@@ -160,7 +152,7 @@ AppointmentSettings = React.createClass({
                 <p><span>Duration:</span> { this.props.appointment.duration }min </p>
               </div>
               <div className="col-md-6">
-                <p><span>Latest:</span> { latest } </p>
+                <p><span>Latest:</span> { this.state.latest } </p>
               </div>
             </div>
           </div>

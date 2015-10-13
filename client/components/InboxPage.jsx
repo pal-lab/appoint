@@ -8,8 +8,6 @@ InboxPage = React.createClass({
   mixins: [ReactMeteorData, Navigation, State],
 
   getMeteorData() {
-    // Get list ID from ReactRouter
-    //const listId = this.getParams().listId;
     return {
       appointments: Appointments.find().fetch()
     };

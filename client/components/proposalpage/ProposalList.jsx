@@ -32,8 +32,7 @@ ProposalList = React.createClass({
     return (
       <div className="page proposals-list">
         <AppointmentTabBar
-          appointment = { this.props.appointment }
-          />
+          appointment = { this.props.appointment }/>
         <div className="list-items">
           { allproposals }
         </div>

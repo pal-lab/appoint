@@ -22,6 +22,21 @@ setTimeout(function () {
   ShowConnectionIssues.set(true);
 }, CONNECTION_ISSUE_TIMEOUT);
 
+Meteor.subscriptionManager = new SubsManager({
+  // maximum number of cache subscriptions
+  cacheLimit: 100,
+  // any subscription will be expire after 30 minute, if it's not subscribed again
+  expireIn: 30
+});
+
+Meteor.autorun( function() {
+    if (Meteor.user()){
+      let user = Meteor.user();
+      Meteor.subscriptionManager.subscribe('appointment', user);
+      Meteor.subscriptionManager.subscribe('myappointmentevents', user.profile.invitations);
+    }
+});
+
 
 // This component handles making the subscriptons to globally necessary data,
 // handling router transitions based on that data, and rendering the basid app
@@ -30,9 +45,12 @@ AppBody = React.createClass({
   mixins: [ReactMeteorData, Navigation, State],
 
   getInitialState() {
+
+    Meteor.subscriptionManager.subscribe('users');
+
     return {
       menuOpen: false,
-      currentUser: Meteor.user()
+      currentUser: Meteor.user(),
     };
   },
 
@@ -46,27 +64,30 @@ AppBody = React.createClass({
   };
   },
 
-  getMeteorData() {
-    const user = Meteor.user();
-    const subHandles = [
-        Meteor.subscribe("appointment", user),
-        //Meteor.subscribe("appointmentproposal")
-    ];
-    const subsReady = _.all(subHandles, function (handle) {
-      return handle.ready();
-    });
 
+  getMeteorData() {
+
+    let user = Meteor.user();
+
+    // console.log('getMeteorDate from AppBody');
+    // console.log('User: ' +user);
+    // console.log('StateUser: ' +this.state.currentUser);
+    // if(user){
+    //   Meteor.subscriptionManager.subscribe('appointment', user);
+    //   Meteor.subscriptionManager.subscribe('myappointmentevents', Meteor.user().profile.invitations);
+
+    // }
+    
     // Get the current routes from React Router
     const routes = this.getRoutes();
     // If we are at the root route, and the subscrioptions are ready
-    if (routes.length > 1 && routes[1].isDefault && subsReady) {
-      // Redirect to the route for the first todo list
+    
+    if (routes.length > 1 && routes[1].isDefault && user) {
       this.replaceWith("inboxPage");
     }
 
     return {
-      subsReady: subsReady,
-      currentUser: Meteor.user(),
+      currentUser: user,
       disconnected: ShowConnectionIssues.get() && (! Meteor.status().connected)
     };
   },
@@ -91,17 +112,16 @@ AppBody = React.createClass({
     return (
       <div id="container" className={ appBodyContainerClass }>
 
-        <LeftPanel
-          currentUser={this.data.currentUser} />
+        <LeftPanel currentUser={Meteor.user()} />
 
         { this.data.disconnected ? <ConnectionIssueDialog /> : "" }
 
         <div className="content-overlay" onClick={ this.toggleMenuOpen }></div>
 
         <div id="content-container">
-          { this.data.subsReady ?
-            <RouteHandler /> :
-            <AppLoading /> }
+          
+          <RouteHandler />
+          
         </div>
 
       </div>
