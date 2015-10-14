@@ -13,7 +13,7 @@ const routes = (
     <Route name="signin" path="/signin" handler={AuthSignInPage} />
     <Route name="proposalpage" path="/appointment/:appointment_id/proposeddates" handler={ProposalPage} />
     <Route name="settings" path="/settings" handler={UserSettings} />
-    <DefaultRoute handler={AppLoading} />
+    <DefaultRoute handler={InboxPage} />
     <NotFoundRoute handler={AppNotFound} />
   </Route>
 )
