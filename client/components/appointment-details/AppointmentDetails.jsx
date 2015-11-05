@@ -35,37 +35,49 @@ AppointmentDetails = React.createClass({
     return (this.state.currentUser._id === this.props.appointment.initiator);
   },
 
-  listEventsInRange() {
+  getEventsInRange() {
     if (Meteor.isCordova) {
-      console.log('DEBUG: Getting all events in Range');
-      // Wait for Cordova to load
-      document.addEventListener("deviceready", onDeviceReady, false);
-      // Cordova is ready
-      function onDeviceReady() {
-        // prep some variables
         var cal = window.plugins.calendar;
-        var title = "New Years party";
-        var loc = "The Club";
-        var notes = "Bring pizza.";
-        var start = new Date(2015, 0, 1, 20, 0, 0, 0, 0); // Jan 1st, 2015 20:00
-        var end = new Date(2015, 12, 1, 22, 0, 0, 0, 0); // Jan 1st, 2015 22:00
-        var calendarName = "MyCal";
+        var earliest = new Date(this.props.appointment.earliest);
+        var latest = new Date(this.props.appointment.latest);
 
         var success = function(message) {
           console.log(message);
-          alert("Success: " + JSON.stringify(message))
+          //alert("Success: " + JSON.stringify(message))
+          return message;
         };
         var error = function(message) {
           alert("Error: " + message)
+          return [];
         };
-        // create an event silently (on Android < 4 an interactive dialog is shown)
-        //window.plugins.calendar.createEvent(title,eventLocation,notes,startDate,endDate,success,error);
-        cal.listEventsInRange(start, end, success, error);
-        //cal.listCalendars(success, error);
-      }
+        cal.listEventsInRange(earliest, latest, success, error);
   } else {
       alert("Still using a browser " + Meteor.user().profile.firstname + "? Start using the app and  I will print your dates!");
+      return [];
   }
+},
+
+addAppointToCal() {
+  if (Meteor.isCordova) {
+      var cal = window.plugins.calendar;
+      var title = "New Years party";
+      var location = "The Club";
+      var notes = "Bring pizza.";
+      var earliest = new Date(this.props.appointment.earliest);
+      var latest = new Date(this.props.appointment.latest);
+      var calendarName = "MyCal";
+
+      var success = function(message) {
+        console.log(message);
+        alert("Success: " + JSON.stringify(message))
+      };
+      var error = function(message) {
+        alert("Error: " + message)
+      };
+      cal.createEvent(title,location,notes,earliest,latest,success,error);
+} else {
+    alert("Still using a browser " + Meteor.user().profile.firstname + "? Start using the app and  I will save your dates!");
+}
 },
 
   render() {
@@ -73,7 +85,7 @@ AppointmentDetails = React.createClass({
       let debugElements = null;
       debugElements = (
         <div style={{width: '100%', textAlign: 'center'}}>
-          <button onClick={ this.listEventsInRange } className="btn btn-primary">Debug: Print my Calendar<span className="icon-check"></span></button>
+          <button onClick={ this.getEventsInRange } className="btn btn-primary">Debug: Print my Calendar<span className="icon-check"></span></button>
           <br/>
         </div>
       );
