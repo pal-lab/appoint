@@ -474,6 +474,9 @@ Meteor.methods({
   resetAll: function() {
     dropData(loadFixtures);
   },
+  drop: function() {
+    dropData();
+  },
   loadFixtures: function() {
     loadFixtures(true);
   }
