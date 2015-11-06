@@ -4,10 +4,10 @@ const Link = ReactRouter.Link;
 AppointmentSettings = React.createClass({
   propTypes: {
     appointment: React.PropTypes.object.isRequired,
+    scheduledEvent: React.PropTypes.object.isRequired,
   },
 
   getInitialState() {
-
     return {
       appointment_id: this.props.appointment._id,
       purpose: this.props.appointment.purpose,
@@ -54,6 +54,7 @@ AppointmentSettings = React.createClass({
   },
 
   render() {
+
     let className = "appointment-settings";
 
     let renderObject;
@@ -136,7 +137,7 @@ AppointmentSettings = React.createClass({
             <div className="col-xs-12 col-md-12" style={{textAlign: 'center', paddingBottom: '25px'}}>
               <h2 >{ this.props.appointment.purpose }</h2>
               <p>
-                <span className="status">Status:&nbsp;</span> { this.props.appointment.status}
+                <span className="status">Status:&nbsp;</span> { this.props.appointment.status}, { this.props.scheduledEvent.date}
               </p>
             </div>
             <div className="row col-md-12">
