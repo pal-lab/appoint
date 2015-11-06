@@ -43,10 +43,14 @@ AppointmentPage = React.createClass({
           showLoadingIndicator={this.data.appointmentLoading} />
 
         <div className="content-scrollable list-items appointment-page">
-          <AppointmentDetails
-            appointment={this.data.appointment}
-            scheduledEvent={this.data.scheduledEvent}
-            invitedMembers={this.data.invitedMembers} />
+            { this.data.scheduledEvent
+                ? <AppointmentDetails
+                  appointment={this.data.appointment}
+                  scheduledEvent={this.data.scheduledEvent}
+                  invitedMembers={this.data.invitedMembers} />
+                  : <AppointmentDetails
+                    appointment={this.data.appointment}
+                    invitedMembers={this.data.invitedMembers} /> }
         </div>
       </div>
     );

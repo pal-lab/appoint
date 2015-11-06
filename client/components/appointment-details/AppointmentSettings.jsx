@@ -4,7 +4,7 @@ const Link = ReactRouter.Link;
 AppointmentSettings = React.createClass({
   propTypes: {
     appointment: React.PropTypes.object.isRequired,
-    scheduledEvent: React.PropTypes.object.isRequired,
+    scheduledEvent: React.PropTypes.object,
   },
 
   getInitialState() {
@@ -137,7 +137,9 @@ AppointmentSettings = React.createClass({
             <div className="col-xs-12 col-md-12" style={{textAlign: 'center', paddingBottom: '25px'}}>
               <h2 >{ this.props.appointment.purpose }</h2>
               <p>
-                <span className="status">Status:&nbsp;</span> { this.props.appointment.status}, { this.props.scheduledEvent.date}
+                  { this.props.scheduledEvent
+                      ? <div> <span className="status">Status:&nbsp;</span> { this.props.appointment.status}, { this.props.scheduledEvent.date} </div>
+                  : <div> <span className="status">Status:&nbsp;</span> { this.props.appointment.status} </div>}
               </p>
             </div>
             <div className="row col-md-12">

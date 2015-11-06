@@ -11,7 +11,7 @@ AppointmentDetails = React.createClass({
   propTypes: {
     appointment: React.PropTypes.object.isRequired,
     invitedMembers: React.PropTypes.array.isRequired,
-    scheduledEvent: React.PropTypes.object.isRequired
+    scheduledEvent: React.PropTypes.object,
   },
 
   getInitialState() {
@@ -108,10 +108,14 @@ addAppointToCal() {
           <AppointmentTabBar
             appointment = { this.props.appointment }
             />
-          <AppointmentSettings
-            appointment = { this.props.appointment }
-            scheduledEvent = { this.props.scheduledEvent }
-            />
+        { this.props.scheduledEvent
+                ? <AppointmentSettings
+                  appointment = { this.props.appointment }
+                  scheduledEvent = { this.props.scheduledEvent }
+                  />
+                  : <AppointmentSettings
+                    appointment = { this.props.appointment }
+                    /> }
           { debugElements }
           { answerInvitationButtons }
 
